@@ -1,12 +1,3 @@
-/*
-   main-bookmarks.js - this is the main script entry point for generating a bookmarks file using rollup
-*/
-
-const bookmarks = [
-
-    {
-        type: 'js',
-        js : 'alert(\'Hello World\')'
-    }
-
-];
+import { apply_to_buttons } from './apply_to_buttons.js';
+import { COLOR } from 'plugin_set_color';
+apply_to_buttons( COLOR );
