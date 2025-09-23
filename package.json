@@ -2,9 +2,11 @@
   "name": "reuse_color_tag_patch",
   "version": "0.0.0",
   "description": "color tag fix for data1 at finger lakes reuse",
-  "main": "rollup.config.js",
+  "main": "rollup.config.static.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"RG8geW91IGtub3cgd2hvIGF0ZSBhbGwgdGhlIGRvbnV0cz8K\" | base64 -d && exit 1",
+    "build_static": "rollup -c rollup.config.static.js",
+    "build_bookmarks": "node \"npm_scripts/build_bookmarks.js\""
   },
   "type": "module",
   "author": "Dustin Pfister",

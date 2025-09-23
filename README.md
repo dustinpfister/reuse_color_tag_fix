@@ -6,24 +6,62 @@ This is where this software patch comes into play. It is a collection of scripts
 
 So in conclusion, this project is a band-aid of sorts, to buy time. Enough time until a proper fix is issued which involves updating, and re deploying the updated server side code. If the code has been updated, then this project is no longer relevant. If it has not, then I need to continue to maintain this band-aid for what it is worth.
 
-## How to use
+## 1 ) How to use
 
-In the dist folder there are a number of final, generated output files that are the various software patches that can be used to fix the color tag problem on data1. 
+In the dist folder there are a number of final, generated output files that are the various forms of the software patch that can be used to fix the color tag problem on data1. There is a _chrome\_extension_ form, a _bookmark import file_ form, and various _static script_ forms of the patch.
 
-The 'chrome\_extension' folder would be the best way to go about fixing the problem in a way in which it will just happen automatically each time the page is reloaded or navigated to by a user. To set this up you will need to go to chrome://extensions then make sure that 'Developer mode' is toggled on. You will then want to click the 'Load unpacked' button and navigate the the root 'chrome\_extension' which is what will need to be selected.
+The chrome\_extension folder would be the best way to go about fixing the problem in a way in which it will just happen automatically each time the page is reloaded or navigated to by a user. To set this up you will need to go to chrome://extensions then make sure that 'Developer mode' is toggled on. You will then want to click the 'Load unpacked' button and navigate the the root 'chrome\_extension' which is what will need to be selected.
 
 The 'static' folder contains a number of static js functions that can be used to fix the problem by injecting the code directly into the javaScript console. There are two files for each color, one in a development form, and the other in a minified form. The minified form would be a better choice if you need to manually make a bookmarlet by just using the javascript: prototcol followed by the code. 
 
-## How to Build files
+## 2.0 ) How to Build files
 
-I am using the nodejs global script called Rollup to generate the final distribution files from source files. Assuming that you have nodejs and npm installed, install rollup as a global script so that it can be used as a command line tool. If you are at the root of the project folder then use just need to call rollup with the -c option, then give the config file for what you want to build. Rollup will then read the settings defined in the config.js file to build the given form of the color tag fix.
+I am using the nodejs global script called Rollup, as well as one additional custom script, to generate the final distribution files from source files. I have also set up some npm scripts to help make this process easy, but there is still a bit of a setup process here if you do not have everything installed, cloned down, ect. 
+
+### 2.1 ) Check if you have git, nodejs and npm installed to begin with, and install if need be.
+
+Before installing git, node, and npm, it is possible that one or more might all ready be there. There are a few options when it comes to checking if a command is installed on a Linux system, I like to use the bash built in command 'type'. So there is using 'type' to find the location of node and npm. If these are not installed you will get a 'bash: type: \[commandName\]: not found' message. If they are installed the -v option can be used to check the version numbers of these. The versions that I was using to build are in the example below.
+
+```
+$ type git
+git is /usr/bin/git
+$ type node
+node is /usr/local/bin/node
+$ type npm
+npm is hashed (/usr/local/bin/npm)
+$ git -v
+git version 2.43.0
+$ node -v
+v22.17.1
+$ npm -v
+10.9.2
+```
+
+If git, node, and npm are not installed you will want them installed in order to build files.
+
+```
+$ sudo apt install git nodejs npm
+```
+
+if the version is out of date, use the '[n npmjs](https://www.npmjs.com/package/n/v/5.0.0)' package to install an updated version of node.
+
+### 2.2) Install rollup as a global script
 
 ```
 $ sudo npm install --global rollup
 ```
 
-### To build 
+### 2.3) clone down this repo, do an npm install
+
+```
+$ git clone --depth 1 https://github.com/dustinpfister/reuse_color_tag_fix
+$ cd reuse_color_tag_fix
+$ npm install
+```
+
+### 2.4) To build static files
 
 ```
 $ rollup -c rollup.config.static.js
 ```
+

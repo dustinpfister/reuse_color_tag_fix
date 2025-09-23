@@ -1,8 +1,12 @@
 import { readdir, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DIR_STATIC = '../dist/static';
-const DIR_OUT = '../dist/bookmarks'
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const DIR_STATIC = path.join(__dirname, '../dist/static');
+const DIR_OUT = path.join(__dirname, '../dist/bookmarks');
 
 const get_static_html = () => {
     let min_files = [];
@@ -29,10 +33,10 @@ const get_static_html = () => {
 const html_bookmarks = function( html='') {
     let source = '<!DOCTYPE NETSCAPE-Bookmark-file-1>\n' +
     '<!-- -----------------------------------------------------\n' +
-    '  color-tag-fix R3 bookmarklets by Dustin                 \n' +
-    '    This script was generated using rollup                \n' +
-    '    I advise to use rollup to create this rather than     \n' +
-    '    edit manually.                                        \n' +
+    '  color-tag-fix bookmarklets                              \n' +
+    '    This bookmarks file was generated I advise to use     \n' +
+    '    the scripts at the repo to create this rather than    \n' +
+    '    edit it manually.                                     \n' +
     '--------------------------------------------------------->\n' +
     '<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">\n'+
     '<TITLE>Bookmarks</TITLE>\n' +
@@ -54,10 +58,13 @@ const html_bookmarks = function( html='') {
 
 mkdir(DIR_OUT, { recursive: true })
 .then(()=>{
+    console.log('Generating static links, by reading dist/static files... ', '\n');
     return get_static_html();
 })
 .then((html)=>{
     const html_full = html_bookmarks( html );
-    return writeFile( path.join(DIR_OUT, 'bookmarks.html'), html_full, 'utf-8' ); 
+    const uri = path.join(DIR_OUT, 'bookmarks.html');
+    console.log('full html done, generating bookmarks.html file at : ' + uri, '\n');
+    return writeFile( uri, html_full, 'utf-8' ); 
 })
 
