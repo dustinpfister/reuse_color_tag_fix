@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Reuse data1 Color Tag Fix R3",
+  "description": "This chrome extension injects the data1 color tag patch into data1 each time the page reloads.",
+  "version": "0.3",
+  "icons": {
+    "16": "img/icon_16.png",
+    "32": "img/icon_32.png",
+    "48": "img/icon_48.png",
+    "128": "img/icon_128.png"
+  },
+  "content_scripts": [
+    {
+      "js": [ "patch.js" ],
+      "matches": [
+        "https://data1.ithacareuse.org/pricing/portal/RMC/",
+        "https://data1.ithacareuse.org/pricing/portal/IRC/"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["api.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

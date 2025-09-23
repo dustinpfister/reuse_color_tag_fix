@@ -1,0 +1,15 @@
+{
+  "name": "reuse_color_tag_patch",
+  "version": "0.0.0",
+  "description": "color tag fix for data1 at finger lakes reuse",
+  "main": "rollup.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "Dustin Pfister",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "uglify-js": "^3.19.3"
+  }
+}
