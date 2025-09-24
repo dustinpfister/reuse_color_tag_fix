@@ -1,4 +1,4 @@
-/* color-tag-fix, R3-static Lavender by Dustin */
+/* color-tag-fix, R4-static Lavender by Dustin */
 (function () {
     'use strict';
 

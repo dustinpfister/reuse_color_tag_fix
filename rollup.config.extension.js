@@ -1,9 +1,6 @@
 import { plugin_static } from './rollup_plugins/static.js';
-import packageJSON from './package.json' with { type: 'json' };
-const VERSION = 'R' + packageJSON.version.split('.')[1];
 
-console.log( 'building static scripts for reuse_color_tag_patch ' + VERSION );
-
+const VERSION = 'R4';
 const gen_banner = (color='Green') => {
     return '\/\* color-tag-fix, ' + VERSION + '-static ' + color + ' by Dustin \*\/';
 };

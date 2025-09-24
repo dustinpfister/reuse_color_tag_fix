@@ -1,4 +1,4 @@
-/* color-tag-fix, R3-static Yellow by Dustin */
+/* color-tag-fix, R4-static Yellow by Dustin */
 (function () {
     'use strict';
 
