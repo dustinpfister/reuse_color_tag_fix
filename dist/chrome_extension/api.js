@@ -47,10 +47,12 @@
         log('bar');
         return 'bar';
     };
-    RCTF.run_color_tag_fix = () => {
-        const NOW = new Date(); // <-- need to do some testing change what 'NOW' is to see what happens
+    // need to do some testing change what 'NOW' is to see what happens
+    // months are zero relative with js dates so:
+    // new Date(2025, 8, 16 ) is Sep 16th 2025
+    RCTF.run_color_tag_fix = ( NOW= new Date() ) => {
         const time = NOW.getTime();
-        const ms = Math.round( time - COLOR.first_tuesday.getTime() );
+        const ms = Math.round( ( time + 1 ) - COLOR.first_tuesday.getTime() );
         const tuesday_count = Math.ceil( ms  / ( 1000  * 60 * 60 * 24 * 7) );
         let print_index = COLOR.first_index;
         if(COLOR.autoset){
