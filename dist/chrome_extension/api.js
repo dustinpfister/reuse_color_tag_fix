@@ -43,10 +43,6 @@
         };
     };
     const RCTF = window.RCTF = {};
-    RCTF.foo = () => {
-        log('bar');
-        return 'bar';
-    };
     // need to do some testing change what 'NOW' is to see what happens
     // months are zero relative with js dates so:
     // new Date(2025, 8, 16 ) is Sep 16th 2025

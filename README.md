@@ -1,6 +1,16 @@
 # reuse_color_tag_fix
 
+<!--
 ![logo](https://github.com/dustinpfister/reuse_color_tag_fix/blob/main/dist/chrome_extension/img/icon_128.png?raw=true)
+-->
+
+<p align="center">
+  <img 
+    width="256"
+    height="256" 
+    src="https://github.com/dustinpfister/reuse_color_tag_fix/blob/main/dist/chrome_extension/img/icon_128.png"
+  >
+</p>
 
 This is the patch to the color tag problem with data1 at Finger Lakes Reuse. At reuse we use what many refer to as 'data1' every day when it comes to to printing labels to price items in various departments. At reuse we use a color tag system of sorts, that is that when we price an item as a color tag, rather than a white tag, it goes threw what is called a color discount cycle. We where using a six color system, and discounts of 25, 50, and 75 percent off. Decisions where made where a new system should be adopted, which is a 5 color system with just 25, and 50 percent off. This is fine, as these kinds of adjustments do need to be made from time to time. However the back end source code for data1 was not updated to accommodate this change.
 
