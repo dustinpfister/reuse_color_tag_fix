@@ -1,3 +1,4 @@
+import { log } from './utils.js';
 const apply_to_buttons = function( opt= {} ){
     opt = Object.assign({}, { color: '', debug: false }, opt);
     opt.color = opt.color[0].toUpperCase() + opt.color.substring(1, opt.color.length );
@@ -12,7 +13,7 @@ const apply_to_buttons = function( opt= {} ){
              el.id = COLOR_CHAR + arr_id.slice(1, 5).join('');
              el.className = CLASS_STR;
              if(opt.debug){
-                 console.log( 'id='+ el.id, 'className=' + el.className );
+                 log( 'id='+ el.id, 'className=' + el.className );
              }
         }
         i += 1;

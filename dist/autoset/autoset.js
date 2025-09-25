@@ -7,27 +7,12 @@
 (function () {
     'use strict';
 
-    const apply_to_buttons = function( opt= {} ){
-        opt = Object.assign({}, { color: '', debug: false }, opt);
-        opt.color = opt.color[0].toUpperCase() + opt.color.substring(1, opt.color.length );
-        const COLOR_CHAR = opt.color[0].toUpperCase();
-        const CLASS_STR = 'btn ' + opt.color + '-tag btn-lg';
-        const buttons = document.getElementsByTagName('button');
-        let i = 0, len = buttons.length;
-        while(i < len){
-            const el = buttons[i];
-            const arr_id = el.id.split('');
-            if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
-                 el.id = COLOR_CHAR + arr_id.slice(1, 5).join('');
-                 el.className = CLASS_STR;
-                 if(opt.debug){
-                     console.log( 'id='+ el.id, 'className=' + el.className );
-                 }
-            }
-            i += 1;
+    const log = function(){
+        const con = window.console;
+        if(COLOR.debug){
+            con.log.apply(null, Array.from( arguments ) );
         }
     };
-
     const mod = function(x, m) {
         return (x % m + m) % m;
     };
@@ -43,7 +28,28 @@
         return COLOR.first_index;
     };
 
-    const COLOR = {
+    const apply_to_buttons = function( opt= {} ){
+        opt = Object.assign({}, { color: '', debug: false }, opt);
+        opt.color = opt.color[0].toUpperCase() + opt.color.substring(1, opt.color.length );
+        const COLOR_CHAR = opt.color[0].toUpperCase();
+        const CLASS_STR = 'btn ' + opt.color + '-tag btn-lg';
+        const buttons = document.getElementsByTagName('button');
+        let i = 0, len = buttons.length;
+        while(i < len){
+            const el = buttons[i];
+            const arr_id = el.id.split('');
+            if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
+                 el.id = COLOR_CHAR + arr_id.slice(1, 5).join('');
+                 el.className = CLASS_STR;
+                 if(opt.debug){
+                     log( 'id='+ el.id, 'className=' + el.className );
+                 }
+            }
+            i += 1;
+        }
+    };
+
+    const COLOR$1 = {
         autoset: true,
         debug: false,
         first_tuesday: new Date(2025, 9 - 1, 9, 0, 0, 0, 0),
@@ -58,9 +64,9 @@
         ]
     };
 
-    const print_index = get_print_index_by_date(COLOR, new Date() );
-    COLOR.color = COLOR.data[ print_index ].desc;
+    const print_index = get_print_index_by_date(COLOR$1, new Date() );
+    COLOR$1.color = COLOR$1.data[ print_index ].desc;
 
-    apply_to_buttons(COLOR);
+    apply_to_buttons(COLOR$1);
 
 })();

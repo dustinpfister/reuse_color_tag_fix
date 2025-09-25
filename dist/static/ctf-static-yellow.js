@@ -7,6 +7,13 @@
 (function () {
     'use strict';
 
+    const log = function(){
+        const con = window.console;
+        if(COLOR.debug){
+            con.log.apply(null, Array.from( arguments ) );
+        }
+    };
+
     const apply_to_buttons = function( opt= {} ){
         opt = Object.assign({}, { color: '', debug: false }, opt);
         opt.color = opt.color[0].toUpperCase() + opt.color.substring(1, opt.color.length );
@@ -21,15 +28,15 @@
                  el.id = COLOR_CHAR + arr_id.slice(1, 5).join('');
                  el.className = CLASS_STR;
                  if(opt.debug){
-                     console.log( 'id='+ el.id, 'className=' + el.className );
+                     log( 'id='+ el.id, 'className=' + el.className );
                  }
             }
             i += 1;
         }
     };
 
-    const COLOR = { color: 'Yellow', debug: false };
+    const COLOR$1 = { color: 'Yellow', debug: false };
 
-    apply_to_buttons( COLOR );
+    apply_to_buttons( COLOR$1 );
 
 })();

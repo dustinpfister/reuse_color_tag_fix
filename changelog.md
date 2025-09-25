@@ -15,5 +15,6 @@
     * A rollup.config.autoset script that builds a dist/autoset/autoset.js from an src folder
     * The rollup.config.autoset script also builds an dist/autoset/autoset.min.js file
     * autoset.min.js is included as an option in bookmarklet.html
-    * an /src/utils.js for log and mod funcitons
+    * an /src/utils.js for log and mod functions
+    * an /src/get\_print\_index\_by\_date.js file
     * readme edits
