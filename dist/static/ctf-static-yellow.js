@@ -1,4 +1,9 @@
-/* color-tag-fix, R4-static Yellow by Dustin */
+/********** ********** **********
+  color-tag-fix, R4-Yellow, color-Auto
+  by: Dustin Pfister 
+  e-mail: dustin.pfister@fingerlakesreuse.org  
+  github: https://github.com/dustinpfister/reuse_color_tag_fix 
+********** ********** *********/
 (function () {
     'use strict';
 
@@ -23,7 +28,7 @@
         }
     };
 
-    const COLOR = { color: 'Yellow', debug: false };
+    const COLOR = { color: 'static', debug: false };
 
     apply_to_buttons( COLOR );
 
