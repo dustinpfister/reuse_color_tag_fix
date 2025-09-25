@@ -4,12 +4,14 @@
     COLOR.debug = true;
     COLOR.first_tuesday = new Date(2025, 9 - 1, 16); // <-- the ref date ( months are zero relative with js dates )
     COLOR.first_index = 0;        // <-- what index in COLOR.data should line up with the reference date
+    COLOR.ascending = true;       // true if ascending threw COLOR.data, false for descending
     COLOR.data = [ // <-- The order of this matters!
         { i: 0, desc: 'Green',    web: '#00ff00' },
-        { i: 1, desc: 'Red',      web: '#ff0000' },
-        { i: 2, desc: 'Orange',   web: '#ff8800' },
-        { i: 3, desc: 'Yellow',   web: '#ffff00' },
-        { i: 4, desc: 'Blue',     web: '#0000ff' }
+        { i: 1, desc: 'Blue',     web: '#0000ff' },
+        { i: 2, desc: 'Yellow',   web: '#ffff00' },
+        { i: 3, desc: 'Orange',   web: '#ff8800' },
+        { i: 4, desc: 'Red',      web: '#ff0000' }
+        
     ];
     const log = function(){
         const con = window.console;
@@ -52,7 +54,11 @@
         const tuesday_count = Math.ceil( ms  / ( 1000  * 60 * 60 * 24 * 7) );
         let print_index = COLOR.first_index;
         if(COLOR.autoset){
-            print_index = mod(COLOR.first_index - tuesday_count, COLOR.data.length);
+
+            const day_delta = tuesday_count * ( COLOR.ascending ? 1 : -1 );
+            //print_index = mod(COLOR.first_index - tuesday_count, COLOR.data.length);
+            //print_index = mod(COLOR.first_index + tuesday_count, COLOR.data.length);
+            print_index = mod(COLOR.first_index + day_delta, COLOR.data.length);
         }
         const cd = get_current_colors(print_index);
         const CLASS_STR = "btn " + cd.print.desc + "-tag btn-lg";
