@@ -1,4 +1,3 @@
-//import { UglifyJS } from "uglify-js";
 import UglifyJS from "uglify-js";
 
 const plugin_static = function( color='Red' ) {
@@ -17,20 +16,18 @@ const plugin_static = function( color='Red' ) {
             return null;
         },
         async generateBundle(output, bundle) {
-        
             const file_keys = Object.keys( bundle );
             const fn_parts = file_keys[0].split('.');
             const fileName = fn_parts[0] + '.min.js';
             const code = bundle[ file_keys[0] ].code;
             const code_min = UglifyJS.minify(code).code;
-        
-            const htmlFile = {
+            const file = {
                 type: 'asset',
                 source: code_min, 
                 name: 'Rollup plugin_static Asset',
                 fileName: fileName
             };
-            this.emitFile(htmlFile);
+            this.emitFile(file);
         }
     };
 };
