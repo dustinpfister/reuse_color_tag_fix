@@ -1,5 +1,5 @@
 /********** ********** **********
-  color-tag-fix, R4-Orange, color-Auto
+  color-tag-fix, R4-static, color-Orange
   by: Dustin Pfister 
   e-mail: dustin.pfister@fingerlakesreuse.org  
   github: https://github.com/dustinpfister/reuse_color_tag_fix 
@@ -28,7 +28,7 @@
         }
     };
 
-    const COLOR = { color: 'static', debug: false };
+    const COLOR = { color: 'Orange', debug: false };
 
     apply_to_buttons( COLOR );
 

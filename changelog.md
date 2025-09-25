@@ -1,23 +1,11 @@
 # pending changes
 
 
-* autoset.min.js is included as an option in bookmarklet.html
 
 * A rollup script that builds the extension api
-
 * Can set an array of COLOR Objects to allow for more than one state
 * the rollup script should update the extension manifest.json with a version number based on what is set in package.json
 * RCTF.setLocalConfig api method to set the local level config
-* api checks for a remote config at 
-```
-fetch('https://ithacareuse.org/rctf.config.json')
-.then((result)=>{
-    return result.json();
-}).then((json) => {
-    console.log(json);
-});
-```
-
 
 
 # R4
@@ -27,4 +15,5 @@ fetch('https://ithacareuse.org/rctf.config.json')
     * COLOR.ascending to set autoset script in ascending of descending mode when getting the current color
     * A rollup.config.autoset script that builds a dist/autoset/autoset.js from an src folder
     * The rollup.config.autoset script also builds an dist/autoset/autoset.min.js file
+    * autoset.min.js is included as an option in bookmarklet.html
     * readme edits

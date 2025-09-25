@@ -5,6 +5,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DIR_STATIC = path.join(__dirname, '../dist/static');
+const URI_AUTOSET = path.join(__dirname, '../dist/autoset/autoset.min.js');
 const DIR_OUT = path.join(__dirname, '../dist/bookmarks');
 
 import packageJSON from '../package.json' with { type: 'json' };
@@ -32,10 +33,18 @@ const get_static_html = () => {
             const escaped_code = code.replace(/\"/g, '&quot;');
             return '<DT><A HREF=\"javascript:' + escaped_code + '\" >' + min_files[i].replace(/.min.js/, '') + '</A>\n';
         }).join('');
-    })
+    });
 };
 
-const html_bookmarks = function( html='') {
+const get_autoset_html = () => {
+    return readFile(URI_AUTOSET, 'utf-8')
+    .then((code)=>{
+        const escaped_code = code.replace(/\"/g, '&quot;');
+        return '<DT><A HREF=\"javascript:' + escaped_code + '\" >Auto set</A>\n';  
+    });
+};
+
+const html_bookmarks = function( html_static='', html_autoset='') {
     let source = '<!DOCTYPE NETSCAPE-Bookmark-file-1>\n' +
     '<!-- -----------------------------------------------------\n' +
     '  reuse_color_tag_patch ' + VERSION + ' bookmarklets.html \n' +
@@ -54,20 +63,34 @@ const html_bookmarks = function( html='') {
     '    <DL><p>\n' +
     '        <DT><H3>set-color</H3>\n' +
     '        <DL><p>\n' +
-                 html + 
+                 html_static + 
     '        </DL><p>\n' +
-    '    </DL><p>\n'; 
-    source += '</DL><p>\n';
+    '        <DT><H3>todays-color</H3>\n' +
+    '        <DL><p>\n' +
+                 html_autoset +
+    '        </DL><p>\n' +
+    '<DT><A HREF=\"https://github.com/dustinpfister/reuse_color_tag_fix/blob/main/README.md\" >ReadMe</A>\n'+    
+    '<DT><A HREF=\"https://github.com/dustinpfister/reuse_color_tag_fix/releases\" >Updates</A>\n'+ 
+    '    </DL><p>\n' +
+    '</DL><p>\n';
     return source;
 }
 
+let html_static = '',
+html_auto = '';
 mkdir(DIR_OUT, { recursive: true })
 .then(()=>{
     console.log('Generating static links, by reading dist/static files... ', '\n');
     return get_static_html();
 })
 .then((html)=>{
-    const html_full = html_bookmarks( html );
+
+    html_static = html;
+    return get_autoset_html();
+})
+.then((html) => {
+    html_auto = html;
+    const html_full = html_bookmarks( html_static, html_auto );
     const uri = path.join(DIR_OUT, 'bookmarks.html');
     console.log('full html done, generating bookmarks.html file at : ' + uri, '\n');
     return writeFile( uri, html_full, 'utf-8' ); 

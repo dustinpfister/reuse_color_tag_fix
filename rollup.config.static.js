@@ -32,19 +32,19 @@ export default [
     },
     {
 	    input: 'src/main-static.js',
-	    plugins: [ plugin_static('static', 'Orange') ],
+	    plugins: [ plugin_static('Orange') ],
 	    output: {
 		    file: 'dist/static/ctf-static-orange.js',
-		    banner : gen_banner('Orange'),
+		    banner : gen_banner('static', 'Orange'),
 		    format: 'iife'
 	    }
     },
     {
 	    input: 'src/main-static.js',
-	    plugins: [ plugin_static('static', 'Yellow') ],
+	    plugins: [ plugin_static('Yellow') ],
 	    output: {
 		    file: 'dist/static/ctf-static-yellow.js',
-		    banner : gen_banner('Yellow'),
+		    banner : gen_banner('static', 'Yellow'),
 		    format: 'iife'
 	    }
     },
