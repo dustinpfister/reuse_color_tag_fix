@@ -20,15 +20,23 @@ So in conclusion, this project is a band-aid of sorts, to buy time. Enough time 
 
 ## 1 ) How to use
 
-In the dist folder there are a number of final, generated output files that are the various forms of the software patch that can be used to fix the color tag problem on data1. There is a _chrome\_extension_ form, a _bookmark import file_ form, and various _static script_ forms of the patch.
+In the dist folder there are a number of final, generated output files that are the various forms of the software patch that can be used to fix the color tag problem on data1. There is a _chrome\_extension_ form, a _bookmark import file_ form, and various _static and autoset script_ forms of the patch.
 
-The 'static' folder contains a number of static js functions that can be used to fix the problem by injecting the code directly into the javaScript console. There are two files for each color, one in a development form, and the other in a minified form. The minified form would be a better choice if you need to manually make a bookmarlet by just using the javascript: prototcol followed by the code. 
+### 1.1 ) the static, and autoset javaScript console scripts
 
-The 'bookmarks' folder contains a bookmarks import file, to quickly import a collection of bookmarks for each tag color.
+The 'static' folder contains a number of static js functions that can be used to fix the problem by injecting the code directly into the javaScript console. There are two files for each color, one in a development form, and the other in a minified form. The minified form would be a better choice if you need to manually make a Bookmarklet by just using the javascript: prototcol followed by the code. However there is no need to bother with that as there is now a bookmarks.html file that can be used to import a collection of these into chrome.
+
+There is also an autoset script as well, once again in both development and mini form.
+
+### 1.2 ) The bookmarks import file.
+
+The 'bookmarks' folder in the dist folder contains a bookmarks import file, to quickly import a collection of Bookmarklets for each tag color, as well as the autoset script. In chrome go to the three dot menu, then 'bookmarks and lists', and then finally 'Import bookmarks and settings'. From there choose file and navagate to the locaiton of the bookmarks.html file. If all goes well you should see an Imported folder in the bookmarks bar. The Bookmarklets should all be there to use when at the data1 pricing portal.
+
+This bookmarks file was made as an alternative option to the chrome extension, then main draw back with this is that you will need to set the color each time to reload the data1 pricing portal. If you want the correct color to set each time, the only option for that with this patch would be the chrome extension.
+
+### 1.3 ) The chrome extension.
 
 The 'chrome\_extension' folder would be the best way to go about fixing the problem in a way in which it will just happen automatically each time the page is reloaded or navigated to by a user. To set this up you will need to go to chrome://extensions then make sure that 'Developer mode' is toggled on. You will then want to click the 'Load unpacked' button and navigate to the root 'chrome\_extension' folder in the dist folder of this repo which is what will need to be selected.
-
-
 
 ## 2.0 ) How to Build files
 
@@ -79,12 +87,13 @@ $ cd reuse_color_tag_fix
 $ npm install
 ```
 
-### 2.4) To build static files
+### 2.4) To build the dist folder files
 
-Run the npm scripts to build the static files.
+Run the npm scripts to build the static files, the autoset script, and then the bookmarks.html file.
 
 ```
 $ npm run build_static
+$ npm run build_autoset
 $ npm run build_bookmarks
 ```
 
