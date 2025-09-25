@@ -1,8 +1,7 @@
 # pending changes
 
 
-
-* A rollup script that builds the extension api
+* A rollup.config.extension script that builds the extension api
 * Can set an array of COLOR Objects to allow for more than one state
 * the rollup script should update the extension manifest.json with a version number based on what is set in package.json
 * RCTF.setLocalConfig api method to set the local level config
@@ -16,4 +15,5 @@
     * A rollup.config.autoset script that builds a dist/autoset/autoset.js from an src folder
     * The rollup.config.autoset script also builds an dist/autoset/autoset.min.js file
     * autoset.min.js is included as an option in bookmarklet.html
+    * an /src/utils.js for log and mod funcitons
     * readme edits

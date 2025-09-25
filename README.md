@@ -32,7 +32,7 @@ There is also an autoset script as well, once again in both development and mini
 
 The 'bookmarks' folder in the dist folder contains a bookmarks import file, to quickly import a collection of Bookmarklets for each tag color, as well as the autoset script. In chrome go to the three dot menu, then 'bookmarks and lists', and then finally 'Import bookmarks and settings'. From there choose file and navagate to the locaiton of the bookmarks.html file. If all goes well you should see an Imported folder in the bookmarks bar. The Bookmarklets should all be there to use when at the data1 pricing portal.
 
-This bookmarks file was made as an alternative option to the chrome extension, then main draw back with this is that you will need to set the color each time to reload the data1 pricing portal. If you want the correct color to set each time, the only option for that with this patch would be the chrome extension.
+This bookmarks file was made as an alternative option to the chrome extension, then main draw back with this is that you will need to set the color each time to reload the data1 pricing portal. If you want the correct color to set each time, the only option for that would be the chrome extension form of this patch.
 
 ### 1.3 ) The chrome extension.
 
