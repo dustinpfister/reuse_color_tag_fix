@@ -47,7 +47,7 @@ const html_bookmarks = function( html='') {
     '<TITLE>Bookmarks</TITLE>\n' +
     '<H1>Bookmarks</H1>\n' +
     '<DL><p>\n' +
-    '    <DT><H3>color-tag-fix R3</H3>\n';
+    '    <DT><H3>color-tag-fix ' + VERSION + '</H3>\n';
     const desc = 'Hello-World Alert';
     const code = 'javascript:alert\(\"Hello World\"\);';
     source += '' +
