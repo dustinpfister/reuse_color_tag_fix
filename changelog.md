@@ -1,6 +1,6 @@
 # pending changes
 
-* The rollup.config.autoset script also builds an dist/autoset/autoset.min.js file
+
 * autoset.min.js is included as an option in bookmarklet.html
 
 * A rollup script that builds the extension api
@@ -26,4 +26,5 @@ fetch('https://ithacareuse.org/rctf.config.json')
     * revision number in npm\_scripts/build_bookmarks.html goes by what is in package.json
     * COLOR.ascending to set autoset script in ascending of descending mode when getting the current color
     * A rollup.config.autoset script that builds a dist/autoset/autoset.js from an src folder
+    * The rollup.config.autoset script also builds an dist/autoset/autoset.min.js file
     * readme edits
