@@ -12,17 +12,17 @@
   >
 </p>
 
-This is the patch to the color tag problem with data1 at Finger Lakes Reuse. We use what many refer to as 'data1' every day when it comes to to printing labels to price items in various departments. A color tag system of sorts is use that differs from white tags in that white tags are a fixed price, while color tags go threw a color discount cycle. We where using a six color system, and discounts of 25, 50, and 75 percent off. Decisions where made where a new system should be adopted, which is a 5 color system with just 25, and 50 percent off. This is fine, as these kinds of adjustments do need to be made from time to time. However the back end source code for data1 was not updated to accommodate this change.
+This is the patch to the color tag problem with data1 at Finger Lakes Reuse. We use what many refer to as 'data1' every day when it comes to to printing labels to price items in various departments. A color tag system of sorts is used that differs from white tags in that white tags are a fixed price, while color tags go threw a color discount cycle. We where using a six color system, but a new system was adopted which is a 5 color system. This is fine, as these kinds of adjustments do need to be made from time to time. However the back end source code for data1 was not updated to accommodate this change.
 
 This is where this software patch comes into play. It is a collection of scripts that can be injected into the javaScript console to set the proper tag color with respect to this new system, rather than the old system. On top of that it is also a bookmark import file that can be used to import a collection of [Bookmarklets](https://en.wikipedia.org/wiki/Bookmarklet) of said scripts into a web browser to set a desired tag color. Finally there is now a chrome extension form of the patch that can be used to inject the patch each time the pages is visited. This means that as long as the chrome extension is installed, and working as it should, people do not need to bother injecting code into the javaScript console, or click a bookmark each time that they navigate to the data1 pricing portal.
 
-So in conclusion, this project is a band-aid of sorts, to buy time. Enough time until a proper fix is issued which involves updating, and re deploying server side code. If the code has been updated, then this project is no longer relevant. If it has not, then I will continue to maintain this for what it is worth.
+This project is then a band-aid of sorts, to buy time. Enough time until a proper fix is issued which involves updating, and re deploying server side code. If the code has been updated, then this project is no longer relevant. If it has not, then I will continue to maintain this for what it is worth.
 
 ## 1 ) How to use
 
-In the dist folder there are a number of final, generated output files that are the various forms of the software patch that can be used to fix the color tag problem on data1. There is a _chrome\_extension_ form, a _bookmark import file_ form, and various _static and autoset script_ forms of the patch.
+[Visit the releases page](https://github.com/dustinpfister/reuse_color_tag_fix/releases) and download the zip file of the latest revision. The dist folder is where there are a number of final, generated output files. These are the various forms of the software patch that can be used to fix the color tag problem on data1. There is a _chrome\_extension_ form, a _bookmark import file_ form, and various _static and autoset script_ forms of the patch.
 
-### 1.1 ) the static, and autoset javaScript console scripts
+### 1.1 ) The static, and autoset javaScript console scripts
 
 The 'static' folder contains a number of static js functions that can be used to fix the problem by injecting the code directly into the javaScript console. There are two files for each color, one in a development form, and the other in a minified form. The minified form would be a better choice if you need to manually make a Bookmarklet by just using the javascript: prototcol followed by the code. However there is no need to bother with that as there is now a bookmarks.html file that can be used to import a collection of these into chrome.
 
@@ -77,7 +77,7 @@ I use rollup to build the static files in both development and minified form. Bu
 $ sudo npm install --global rollup
 ```
 
-### 2.3) clone down this repo, do an npm install
+### 2.3) Clone down this repo, do an npm install
 
 Use git to clone down a copy of the repo. I am using [uglify-js to minify](https://www.npmjs.com/package/uglify-js/) code into a form that works well for bookmarks.
 
