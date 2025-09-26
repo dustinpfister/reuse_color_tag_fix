@@ -24,7 +24,7 @@ const get_json = () => {
       '],\n' +
       '\"web_accessible_resources\": [\n' +
         '{\n' +
-          '\"resources\": [\"api.js\"],\n' +
+          '\"resources\": [\"colorset_api.js\"],\n' +
           '\"matches\": [\"<all_urls>\"]\n' +
         '}\n' +
       ']\n' +

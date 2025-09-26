@@ -64,9 +64,14 @@
         ]
     };
 
-    const print_index = get_print_index_by_date(COLOR$1, new Date() );
-    COLOR$1.color = COLOR$1.data[ print_index ].desc;
+    const RCTF = window.RCTF = {};
 
-    apply_to_buttons(COLOR$1);
+    RCTF.run_color_tag_fix = ( DATE = new Date(), color_obj = COLOR$1 ) => {
+        const print_index = get_print_index_by_date(COLOR$1, DATE );
+        color_obj.color = color_obj.data[ print_index ].desc;
+        apply_to_buttons(color_obj);
+    };
+
+    RCTF.run_color_tag_fix( new Date(), COLOR$1 );
 
 })();

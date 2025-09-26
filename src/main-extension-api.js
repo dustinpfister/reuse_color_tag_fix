@@ -17,7 +17,14 @@ const COLOR = {
     ]
 };
 
-const print_index = get_print_index_by_date(COLOR, new Date() );
-COLOR.color = COLOR.data[ print_index ].desc;
+const RCTF = window.RCTF = {};
 
-apply_to_buttons(COLOR);
+RCTF.run_color_tag_fix = ( DATE = new Date(), color_obj = COLOR ) => {
+    const print_index = get_print_index_by_date(COLOR, DATE );
+    color_obj.color = color_obj.data[ print_index ].desc;
+    apply_to_buttons(color_obj);
+};
+
+RCTF.run_color_tag_fix( new Date(), COLOR );
+
+
