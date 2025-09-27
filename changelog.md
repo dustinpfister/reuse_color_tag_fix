@@ -1,11 +1,18 @@
 # pending changes
 
+* start a custom popup menu for the chrome extension
+* using localStorage to save settings in patch.js of the chrome extension
 
 * can define an array of COLOR objects to use with the extension
 
+* see if color fix extension can be used to inject favicon at any data1 address if not there
+* a main update app loop
+* inject additional info elements
+
+
 # R5
-* applyToElements function that will update display elements
-* RCTF.parse_color method that will return a new COLOR Object
+* applyToElements function that will update display elements used in static, autoset scripts, and chrome extension
+* RCTF.parse_color method that will return a new COLOR Object in javaScript console when using chrome extension
 
 # R4
 * new RCTF api that can be used in the javaScript console when using the extension
@@ -21,3 +28,22 @@
 * A rollup.config.extension script that builds the extension api
 * The rollup.config.extension script should update the extension manifest.json with a version number based on what is set in package.json
 * readme edits
+
+# R3
+* rollup script started for building file from a source file
+* static scripts build from source folder
+* npm script for building a bookmarks.html file from the static files
+* chrome extension started
+* readme file added
+
+# R2
+* autoset script working
+
+# R1
+* autoset script started
+
+# R0
+* original static set color script
+
+
+

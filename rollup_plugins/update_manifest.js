@@ -13,6 +13,9 @@ const get_json = () => {
         '\"48\": \"img/icon_48.png\",\n' +
         '\"128\": \"img/icon_128.png\"\n' +
       '},\n' +
+      '\"action\": {\n' +
+        '\"default_popup\": "popup_menu.html\"\n' +
+      '},\n' +
       '\"content_scripts\": [\n' +
         '{\n' +
           '\"js\": [ \"patch.js\" ],\n' +

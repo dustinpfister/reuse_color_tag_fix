@@ -9,6 +9,9 @@
 "48": "img/icon_48.png",
 "128": "img/icon_128.png"
 },
+"action": {
+"default_popup": "popup_menu.html"
+},
 "content_scripts": [
 {
 "js": [ "patch.js" ],
