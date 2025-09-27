@@ -1,5 +1,6 @@
 import { get_print_index_by_date } from './get_print_index_by_date.js';
 import { apply_to_buttons } from './apply_to_buttons.js';
+import { apply_to_elements } from './apply_to_elements.js';
 
 const COLOR = {
     autoset: true,
@@ -20,3 +21,4 @@ const print_index = get_print_index_by_date(COLOR, new Date() );
 COLOR.color = COLOR.data[ print_index ].desc;
 
 apply_to_buttons(COLOR);
+apply_to_elements(COLOR);

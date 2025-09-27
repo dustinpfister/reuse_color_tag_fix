@@ -1,8 +1,8 @@
 {
 "manifest_version": 3,
-"name": "Reuse data1 Color Tag Fix R4",
+"name": "Reuse data1 Color Tag Fix R5",
 "description": "This chrome extension injects the data1 color tag patch into data1 each time the page reloads.",
-"version": "0.4",
+"version": "0.5",
 "icons": {
 "16": "img/icon_16.png",
 "32": "img/icon_32.png",
