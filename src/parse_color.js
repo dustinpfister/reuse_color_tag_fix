@@ -21,7 +21,7 @@ parse_color.object = ( COLOR ) => {
     return Object.assign({}, COLOR_DEFAULT, COLOR);
 };
 
-parse_color.array = () => {
+parse_color.array = ( COLOR_ARRAY ) => {
     return COLOR_ARRAY_DEFAULT;
 };
 

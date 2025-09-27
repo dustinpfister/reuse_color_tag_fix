@@ -9,9 +9,10 @@
 
     const log = function(){
         const con = window.console;
-        if(COLOR.debug){
+        
+        //if(COLOR.debug){
             con.log.apply(null, Array.from( arguments ) );
-        }
+        //}
     };
     const mod = function(x, m) {
         return (x % m + m) % m;
@@ -60,7 +61,7 @@
         }
     };
 
-    const COLOR$1 = {
+    const COLOR_DEFAULT = {
         autoset: true,
         debug: false,
         first_tuesday: new Date(2025, 9 - 1, 9, 0, 0, 0, 0),
@@ -72,18 +73,41 @@
             { i: 2, desc: 'Yellow', web: '#ffff00' },
             { i: 3, desc: 'Orange', web: '#ff8800' },
             { i: 4, desc: 'Red',    web: '#ff0000' }
-        ]
+        ],
+        color: 'Green'
+    };
+    const COLOR_ARRAY_DEFAULT = [ COLOR_DEFAULT ];
+
+    const parse_color = {};
+
+    parse_color.object = ( COLOR ) => {
+        return Object.assign({}, COLOR_DEFAULT, COLOR);
+    };
+
+    parse_color.array = ( COLOR_ARRAY ) => {
+        return COLOR_ARRAY_DEFAULT;
     };
 
     const RCTF = window.RCTF = {};
 
-    RCTF.run_color_tag_fix = ( DATE = new Date(), color_obj = COLOR$1 ) => {
-        const print_index = get_print_index_by_date(COLOR$1, DATE );
+    RCTF.parse_color = ( obj ) => {
+        if(obj.constructor.name === 'Array'){
+            return parse_color.array(obj);
+        }
+        return parse_color.object( obj );
+    };
+
+    RCTF.run_color_tag_fix = ( DATE = new Date(), color_obj = COLOR ) => {
+        const print_index = get_print_index_by_date(COLOR, DATE );
         color_obj.color = color_obj.data[ print_index ].desc;
         apply_to_buttons(color_obj);
         apply_to_elements(color_obj);
     };
 
-    RCTF.run_color_tag_fix( new Date(), COLOR$1 );
+    const COLOR = RCTF.parse_color( { } );
+
+    log('color: ',COLOR);
+
+    RCTF.run_color_tag_fix( new Date(), COLOR );
 
 })();
