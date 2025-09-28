@@ -1,10 +1,4 @@
 
-const href = window.location.href;
-
-console.log('current href: ' + href);
-console.log('appending api.js...');
-console.log( 'chrome: ', chrome);
-
 const key_check = (key='foo', value='bar') => {
      return chrome.storage.local.get(key)
      .then((result)=>{
@@ -27,28 +21,13 @@ const key_run = (key='foo', run=function(){} ) => {
 key_check('enabled', true)
 .then( ()=>{
     key_run('enabled', (key, value) => {
-        console.log('patch.js', key, value);
         if(value === true){
-            console.log('calling RCTF.run_color_tag_fix');
-        
+            console.log('Calling RCTF.run_color_tag_fix');        
             RCTF.run_color_tag_fix();
         }
     });
 });
 
-
-
-//const script = document.createElement('script');
-//script.src = chrome.runtime.getURL('colorset_api.js');
-//document.body.appendChild(script);
-
-//script.addEventListener('load', ()=>{
-
-//    console.log('colorset api is loaded.');
-    
-
-
-//});
 
 
 

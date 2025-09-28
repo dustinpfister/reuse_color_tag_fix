@@ -8,11 +8,7 @@
     'use strict';
 
     const log = function(){
-        const con = window.console;
-        
-        //if(COLOR.debug){
-            con.log.apply(null, Array.from( arguments ) );
-        //}
+        console.log.apply(null, Array.from( arguments ) );
     };
 
     const apply_to_buttons = function( opt= {} ){

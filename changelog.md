@@ -2,7 +2,7 @@
 
 * only reload the page if at the data1 portal
 
-* change obj to color\_str in apply\_to\_buttons method, and remove log call
+* change obj to color\_str in apply\_to\_buttons method
 * have a get color keys function
 ```
 const get_color_keys = () => {
