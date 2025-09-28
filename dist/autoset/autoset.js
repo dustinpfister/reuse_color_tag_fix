@@ -25,10 +25,46 @@
         return COLOR.first_index;
     };
 
+    const get_color_keys = () => {
+        return atob('R3JlZW4sUmVkLEJsdWUsT3JhbmdlLFllbGxvdyxMYXZlbmRlcg==').split(',');
+    };
+    const parse_color_key = (color_key='') => {
+        if(typeof color_key != 'string'){
+            return color_key;
+        }
+        const keys= get_color_keys();
+        let i = keys.length;
+        while(i--){
+            if(color_key.length === 1 && ( color_key[0] || '' ).toUpperCase() === keys[i][0]){
+                return keys[i];
+            }
+            if(color_key.toUpperCase() === keys[i].toUpperCase()){
+                return keys[i];
+            }
+        }  
+        return color_key;
+    };
+    const validate_color_key = ( color_key='') => {
+        color_key = parse_color_key( color_key );
+        const keys = get_color_keys();
+        let i = keys.length;
+        while(i--){
+            if(keys[i] === color_key){
+                return color_key;
+            }
+        }
+        return false;
+    };
+
     const apply_to_buttons = function( COLOR = {} ){
         COLOR = Object.assign({}, { color: '', debug: false }, COLOR);
-        COLOR.color = COLOR.color[0].toUpperCase() + COLOR.color.substring(1, COLOR.color.length );
-        const COLOR_CHAR = COLOR.color[0].toUpperCase();
+        //COLOR.color = COLOR.color[0].toUpperCase() + COLOR.color.substring(1, COLOR.color.length );
+        COLOR.color = validate_color_key( COLOR.color );
+        if(!COLOR.color){
+            log('the color is not valid.');
+            return;
+        }
+        const COLOR_CHAR = COLOR.color[0]; //COLOR.color[0].toUpperCase();
         const CLASS_STR = 'btn ' + COLOR.color + '-tag btn-lg';
         const buttons = document.getElementsByTagName('button');
         let i = 0, len = buttons.length;
@@ -51,9 +87,10 @@
         const el_current_link = Array.from(document.querySelectorAll('.nav-link')).filter(( el)=>{
             return el.href.match(/#current-tab/);
         })[0];
-        if(COLOR.color && el_current_p && el_current_link){
-            el_current_p.innerText = COLOR.color + ' Tagged Items with Standard Prices...';
-            el_current_link.innerText = COLOR.color;
+        const color_str = validate_color_key(COLOR.color);
+        if(color_str && el_current_p && el_current_link){
+            el_current_p.innerText = color_str + ' Tagged Items with Standard Prices...';
+            el_current_link.innerText = color_str;
         }
     };
 
