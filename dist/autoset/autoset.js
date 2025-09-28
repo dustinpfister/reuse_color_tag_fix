@@ -28,6 +28,7 @@
     const get_color_keys = () => {
         return atob('R3JlZW4sUmVkLEJsdWUsT3JhbmdlLFllbGxvdyxMYXZlbmRlcg==').split(',');
     };
+
     const parse_color_key = (color_key='') => {
         if(typeof color_key != 'string'){
             return color_key;
@@ -44,6 +45,7 @@
         }  
         return color_key;
     };
+
     const validate_color_key = ( color_key='') => {
         color_key = parse_color_key( color_key );
         const keys = get_color_keys();
@@ -58,13 +60,12 @@
 
     const apply_to_buttons = function( COLOR = {} ){
         COLOR = Object.assign({}, { color: '', debug: false }, COLOR);
-        //COLOR.color = COLOR.color[0].toUpperCase() + COLOR.color.substring(1, COLOR.color.length );
         COLOR.color = validate_color_key( COLOR.color );
         if(!COLOR.color){
             log('the color is not valid.');
             return;
         }
-        const COLOR_CHAR = COLOR.color[0]; //COLOR.color[0].toUpperCase();
+        const COLOR_CHAR = COLOR.color[0];
         const CLASS_STR = 'btn ' + COLOR.color + '-tag btn-lg';
         const buttons = document.getElementsByTagName('button');
         let i = 0, len = buttons.length;

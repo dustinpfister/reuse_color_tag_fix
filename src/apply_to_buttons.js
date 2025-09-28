@@ -2,13 +2,12 @@ import { log } from './utils.js';
 import { validate_color_key } from './validate.js';
 const apply_to_buttons = function( COLOR = {} ){
     COLOR = Object.assign({}, { color: '', debug: false }, COLOR);
-    //COLOR.color = COLOR.color[0].toUpperCase() + COLOR.color.substring(1, COLOR.color.length );
     COLOR.color = validate_color_key( COLOR.color );
     if(!COLOR.color){
         log('the color is not valid.');
         return;
     }
-    const COLOR_CHAR = COLOR.color[0]; //COLOR.color[0].toUpperCase();
+    const COLOR_CHAR = COLOR.color[0];
     const CLASS_STR = 'btn ' + COLOR.color + '-tag btn-lg';
     const buttons = document.getElementsByTagName('button');
     let i = 0, len = buttons.length;
