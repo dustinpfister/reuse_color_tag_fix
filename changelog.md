@@ -1,5 +1,48 @@
 # pending changes
 
+* change obj to color\_str in apply\_to\_buttons method, and remove log call
+* have a get color keys function
+```
+const get_color_keys = () => {
+    return atob('R3JlZW4sUmVkLEJsdWUsT3JhbmdlLFllbGxvdyxMYXZlbmRlcg==').split(',');
+};
+```
+* improved apply\_to\_buttons parsing so that the color_str argument will parse 'y', 'Y', 'yellow', and 'yElLoW' to 'Yellow';
+```
+const parse_color_key = (color_key='') => {
+    if(typeof color_key != 'string'){
+        return color_key;
+    }
+    const keys= get_color_keys();
+    let i = keys.length;
+    while(i--){
+        if(color_key.length === 1 && ( color_key[0] || '' ).toUpperCase() === keys[i][0]){
+            return keys[i];
+        }
+        if(color_key.toUpperCase() === keys[i].toUpperCase()){
+            return keys[i];
+        }
+    }  
+    return color_key;
+};
+```
+* improved apply\_to\_buttons by base64 encoding all valid color stings and return out if final value does not match any known value
+```
+const validate_color_key = (color_key='') => {
+    const keys= keys= get_color_keys();
+    let i = keys.length;
+    while(i--){
+        if(keys[i] === color_key){
+            return true;
+        }
+    }
+    return false;
+};
+```
+
+
+* see about updating log
+
 * can define an array of COLOR objects to use with the extension
 
 * see if color fix extension can be used to inject favicon at any data1 address if not there
