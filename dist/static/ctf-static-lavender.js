@@ -9,9 +9,10 @@
 
     const log = function(){
         const con = window.console;
-        if(COLOR.debug){
+        
+        //if(COLOR.debug){
             con.log.apply(null, Array.from( arguments ) );
-        }
+        //}
     };
 
     const apply_to_buttons = function( opt= {} ){
@@ -46,9 +47,9 @@
         }
     };
 
-    const COLOR$1 = { color: 'Lavender', debug: false };
+    const COLOR = { color: 'Lavender', debug: false };
 
-    apply_to_buttons( COLOR$1 );
-    apply_to_elements( COLOR$1 );
+    apply_to_buttons( COLOR );
+    apply_to_elements( COLOR );
 
 })();

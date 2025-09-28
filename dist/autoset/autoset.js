@@ -9,9 +9,10 @@
 
     const log = function(){
         const con = window.console;
-        if(COLOR.debug){
+        
+        //if(COLOR.debug){
             con.log.apply(null, Array.from( arguments ) );
-        }
+        //}
     };
     const mod = function(x, m) {
         return (x % m + m) % m;
@@ -60,7 +61,7 @@
         }
     };
 
-    const COLOR$1 = {
+    const COLOR = {
         autoset: true,
         debug: false,
         first_tuesday: new Date(2025, 9 - 1, 9, 0, 0, 0, 0),
@@ -75,10 +76,10 @@
         ]
     };
 
-    const print_index = get_print_index_by_date(COLOR$1, new Date() );
-    COLOR$1.color = COLOR$1.data[ print_index ].desc;
+    const print_index = get_print_index_by_date(COLOR, new Date() );
+    COLOR.color = COLOR.data[ print_index ].desc;
 
-    apply_to_buttons(COLOR$1);
-    apply_to_elements(COLOR$1);
+    apply_to_buttons(COLOR);
+    apply_to_elements(COLOR);
 
 })();
