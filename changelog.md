@@ -1,23 +1,25 @@
 # pending changes
 
-* only reload the page if at the data1 portal
 
+
+* chrome extension will only reload the page if at the data1 portal after enable or disable
 * can define an array of COLOR objects to use with the extension
-
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 * a main update app loop
 * inject additional info elements
 
 
 # R5
-* applyToElements function that will update display elements used in static, autoset scripts, and chrome extension
+* new apply\_to\_elements function that will update display elements, not just id and className attributes of buttons
+* new get\_color\_keys function that returns an array of valid color names from a base64 encoded string
+* improved apply\_to\_buttons parsing by base64 encoding all valid color stings, and abort if final value does not match any known value
+* improved apply\_to\_buttons parsing so that the color strings like 'y', 'Y', 'yellow', and'yElLoW' parse to a valid 'Yellow' value;
 * RCTF.parse_color method that will return a new COLOR Object in javaScript console when using chrome extension
-* started a custom popup menu for the chrome extension
+* started a custom menu for the chrome extension
 * using chrome.storage.local to save settings for the chrome extension
+* can easily enable/disable the chrome extension 
 * change obj to color\_str in apply\_to\_buttons method
-* have a get color keys function
-* improved apply\_to\_buttons parsing so that the color_str argument will parse 'y', 'Y', 'yellow', and 'yElLoW' to 'Yellow';
-* improved apply\_to\_buttons by base64 encoding all valid color stings and return out if final value does not match any known value
+* data1-RMC and data1-IRC pricing portal links in the bookmarks.html file
 
 # R4
 * new RCTF api that can be used in the javaScript console when using the extension

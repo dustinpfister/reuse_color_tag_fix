@@ -69,6 +69,8 @@ const html_bookmarks = function( html_static='', html_autoset='') {
     '        <DL><p>\n' +
                  html_autoset +
     '        </DL><p>\n' +
+    '<DT><A HREF=\"https://data1.ithacareuse.org/pricing/portal/RMC/\" >data1 pricing (RMC)</A>\n'+   
+    '<DT><A HREF=\"https://data1.ithacareuse.org/pricing/portal/IRC/\" >data1 pricing (IRC)</A>\n'+   
     '<DT><A HREF=\"https://github.com/dustinpfister/reuse_color_tag_fix/blob/main/README.md\" >ReadMe</A>\n'+    
     '<DT><A HREF=\"https://github.com/dustinpfister/reuse_color_tag_fix/releases\" >Updates</A>\n'+ 
     '    </DL><p>\n' +
