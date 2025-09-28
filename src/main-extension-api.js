@@ -24,6 +24,4 @@ const COLOR = RCTF.parse_color( { } );
 
 log('color: ',COLOR);
 
-RCTF.run_color_tag_fix( new Date(), COLOR );
-
 

@@ -27,10 +27,10 @@ const key_run = (key='foo', run=function(){} ) => {
 key_check('enabled', true)
 .then( ()=>{
     key_run('enabled', (key, value) => {
-    
-        console.log(key, value);
-    
+        console.log('patch.js', key, value);
         if(value === true){
+            console.log('calling RCTF.run_color_tag_fix');
+        
             RCTF.run_color_tag_fix();
         }
     });

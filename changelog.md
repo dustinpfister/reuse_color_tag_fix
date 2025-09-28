@@ -1,5 +1,7 @@
 # pending changes
 
+* only reload the page if at the data1 portal
+
 * change obj to color\_str in apply\_to\_buttons method, and remove log call
 * have a get color keys function
 ```
