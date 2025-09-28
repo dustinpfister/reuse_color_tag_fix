@@ -2,7 +2,7 @@
 
 * only reload the page if at the data1 portal
 
-* change obj to color\_str in apply\_to\_buttons method
+
 * have a get color keys function
 ```
 const get_color_keys = () => {
@@ -57,6 +57,7 @@ const validate_color_key = (color_key='') => {
 * RCTF.parse_color method that will return a new COLOR Object in javaScript console when using chrome extension
 * started a custom popup menu for the chrome extension
 * using chrome.storage.local to save settings for the chrome extension
+* change obj to color\_str in apply\_to\_buttons method
 
 # R4
 * new RCTF api that can be used in the javaScript console when using the extension
