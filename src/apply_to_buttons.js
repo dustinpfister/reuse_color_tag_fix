@@ -1,10 +1,9 @@
 import { log } from './utils.js';
 import { validate_color_key } from './validate.js';
 const apply_to_buttons = function( COLOR = {} ){
-    COLOR = Object.assign({}, { color: '', debug: false }, COLOR);
     COLOR.color = validate_color_key( COLOR.color );
     if(!COLOR.color){
-        log('the color is not valid.');
+        log('invalid color');
         return;
     }
     const COLOR_CHAR = COLOR.color[0];
