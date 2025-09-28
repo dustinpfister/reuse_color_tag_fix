@@ -1,6 +1,6 @@
 {
   "name": "reuse_color_tag_patch",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Color tag fix for data1 at finger lakes reuse",
   "main": "rollup.config.static.js",
   "scripts": {

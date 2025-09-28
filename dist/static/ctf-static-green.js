@@ -1,5 +1,5 @@
 /********** ********** **********
-  color-tag-fix, R5-static, color-Green
+  color-tag-fix, R6-static, color-Green
   by: Dustin Pfister 
   e-mail: dustin.pfister@fingerlakesreuse.org  
   github: https://github.com/dustinpfister/reuse_color_tag_fix 

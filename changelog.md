@@ -1,13 +1,60 @@
 # pending changes
 
+* inject additional info elements
+
+```
+<li class="nav-item">
+  <a 
+    class="targetTabChange nav-link active"
+    href="#current-tab"
+    data-toggle="tab"
+    role="tab"
+    aria-selected="true"
+  >Yellow</a>
+</li>
+```
+
+```
+<div class="tab-pane active" id="current-tab" role="tabpanel">
+              <p>Yellow Tagged Items with Standard Prices...</p>
+              
+</div>
+```
+
+```
+const el_li = document.createElement('li');
+el_li.innerText = 'CTF';
+el_li.className = 'targetTabChange nav-link';
+el_li.setAttribute('href', '#ctf-info');
+el_li.setAttribute('data-toggle', 'tab');
+el_li.setAttribute('role', 'tab');
+el_li.setAttribute('aria-selected', 'false');
+const nav_parent = document.querySelectorAll('.nav-tabs')[0];
+nav_parent.appendChild(el_li);
+nav_parent.addEventListener('click', (el) => {
+    if(el.target != el_li){
+        el_li.className = 'targetTabChange nav-link';
+        el_li.setAttribute('aria-selected', 'false');
+    }
+});
+
+const el_div = document.createElement('div');
+el_div.innerText = 'Color Tag Fix Info Tab'
+el_div.className = 'tab-pane';
+el_div.id = 'ctf-info';
+el_div.setAttribute('role', 'tabpanel');
+document.querySelectorAll('.tab-content')[0].appendChild(el_div);
+```
+
+* a main update app loop
 
 
 * chrome extension will only reload the page if at the data1 portal after enable or disable
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
-* a main update app loop
-* inject additional info elements
 
+
+# R6
 
 # R5
 * new apply\_to\_elements function that will update display elements, not just id and className attributes of buttons
