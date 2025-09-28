@@ -1,9 +1,5 @@
 # reuse_color_tag_fix
 
-<!--
-![logo](https://github.com/dustinpfister/reuse_color_tag_fix/blob/main/dist/chrome_extension/img/icon_128.png?raw=true)
--->
-
 <p align="center">
   <img 
     width="256"
