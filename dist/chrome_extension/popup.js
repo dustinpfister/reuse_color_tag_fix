@@ -2,7 +2,7 @@ const el_enabled = document.querySelector('#checkbox_enabled');
 const el_full_menu = document.querySelector('#full_menu');
 const el_mode = document.querySelector('#select_mode');
 const el_canvas = document.querySelector('#color_canvas');
-
+const el_reset = document.querySelector('#button_reset');
 //console.log( chrome.scripting.executeScript );
 
 /********* **********
@@ -51,6 +51,15 @@ el_enabled.addEventListener('change', (e) => {
     .then(()=>{
         reload_at_data1();
         display_full_menu(e.target.checked);
+    });
+});
+/********* **********
+SETUP reset button
+********** *********/
+el_reset.addEventListener('click', (e) => {
+    chrome.storage.local.clear()
+    .then(()=>{
+        reload_at_data1();
     });
 });
 /********* **********
