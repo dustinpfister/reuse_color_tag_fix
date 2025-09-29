@@ -11,12 +11,12 @@
 
 * a main update app loop that will update the color based on the current date as the date changes
 
-* chrome extension will only reload the page if at the data1 portal after enable or disable
+
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 
-
 # R6
+* chrome extension will only reload the page if at the data1 portal after enable or disable
 
 # R5
 * new apply\_to\_elements function that will update display elements, not just id and className attributes of buttons
