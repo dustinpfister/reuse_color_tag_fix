@@ -15,7 +15,7 @@ RCTF.parse_color = ( obj = {} ) => {
 
 RCTF.COLOR = RCTF.parse_color( );
 
-RCTF.run_color_tag_fix = ( DATE = new Date(), COLOR = RCTF.COLOR ) => {
+RCTF.run_color_tag_fix = ( COLOR = RCTF.COLOR, DATE = new Date() ) => {
     if(typeof COLOR === 'object'){
         const print_index = get_print_index_by_date(COLOR, DATE );
         COLOR.color = COLOR.data[ print_index ].desc;
@@ -25,6 +25,10 @@ RCTF.run_color_tag_fix = ( DATE = new Date(), COLOR = RCTF.COLOR ) => {
     }
     apply_to_buttons(COLOR);
     apply_to_elements(COLOR);
+};
+
+RCTF.reset = () => {
+   return chrome.storage.local.clear();
 };
 
 

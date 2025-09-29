@@ -2,6 +2,9 @@ const el_enabled = document.querySelector('#checkbox_enabled');
 const el_full_menu = document.querySelector('#full_menu');
 const el_mode = document.querySelector('#select_mode');
 const el_canvas = document.querySelector('#color_canvas');
+
+//console.log( chrome.scripting.executeScript );
+
 /********* **********
 HELPER FUNCTIONS
 ********** *********/
@@ -73,6 +76,10 @@ el_canvas.addEventListener('pointerdown', (e) => {
     const x = Math.floor(e.clientX - bx.left), y = Math.floor(e.clientY - bx.top);
     const i = Math.floor( Math.floor(y / 64) * 3 + Math.floor(x / 64) );
     console.log(x, y, i);
-    chrome.storage.local.set({ color_select : COLORS[i] });
+    chrome.storage.local.set({ color_select : COLORS[i], manual_count: 1 })
+    .then(()=>{
+        console.log( 'color_select set to :' + COLORS[i] );
+        reload_at_data1();
+    });
     
 });

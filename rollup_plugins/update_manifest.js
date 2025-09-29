@@ -26,13 +26,7 @@ const get_json = () => {
 '    }\n' +
 '  ],\n' +
 '  \"permissions\": [\n' +
-'    \"storage\", \"activeTab\"\n' +
-'  ],\n' +
-'  \"web_accessible_resources\": [\n' +
-'    {\n' +
-'      \"resources\": [\"colorset_api.js\"],\n' +
-'      \"matches\": [\"<all_urls>\"]\n' +
-'    }\n' +
+'    \"scripting\", \"storage\", \"activeTab\"\n' +
 '  ]\n' +
 '}\n';
 };
