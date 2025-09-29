@@ -1,6 +1,7 @@
 const el_enabled = document.querySelector('#checkbox_enabled');
 const el_full_menu = document.querySelector('#full_menu');
 const el_mode = document.querySelector('#select_mode');
+const el_canvas = document.querySelector('#color_canvas');
 /********* **********
 HELPER FUNCTIONS
 ********** *********/
@@ -19,6 +20,19 @@ const display_full_menu = (bool=true) => {
         el_full_menu.style.visibility = 'hidden';
     }
 };
+const COLORS = 'Green,Red,Blue,Orange,Yellow,Lavender'.split(',');
+const color_canvas_draw = (select=null) => {
+    const ctx = el_canvas.getContext('2d');
+    ctx.fillRect( 0, 0, el_canvas.width, el_canvas.height);
+    let i = 0;
+    const len = COLORS.length;
+    while(i < len){
+        const x = i % 3, y = Math.floor(i / 3);
+        ctx.fillStyle = COLORS[i];
+        ctx.fillRect(x * 64, y * 64, 64, 64);
+        i += 1;
+    }
+};
 /********* **********
 SETUP checkbox enabled
 ********** *********/
@@ -27,6 +41,7 @@ chrome.storage.local.get('enabled')
    const bool = result['enabled'];
    el_enabled.checked = bool;
    display_full_menu(bool);
+   color_canvas_draw();
 });
 el_enabled.addEventListener('change', (e) => {
     chrome.storage.local.set({ enabled : e.target.checked })
