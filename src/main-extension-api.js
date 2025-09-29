@@ -6,22 +6,27 @@ import { parse_color } from './parse_color.js';
 
 const RCTF = window.RCTF = {};
 
-RCTF.parse_color = ( obj ) => {
+RCTF.parse_color = ( obj = {} ) => {
     if(obj.constructor.name === 'Array'){
         return parse_color.array(obj);
     }
     return parse_color.object( obj );
 };
 
-RCTF.run_color_tag_fix = ( DATE = new Date(), color_obj = COLOR ) => {
-    const print_index = get_print_index_by_date(COLOR, DATE );
-    color_obj.color = color_obj.data[ print_index ].desc;
-    apply_to_buttons(color_obj);
-    apply_to_elements(color_obj);
+RCTF.COLOR = RCTF.parse_color( );
+
+RCTF.run_color_tag_fix = ( DATE = new Date(), COLOR = RCTF.COLOR ) => {
+    if(typeof COLOR === 'object'){
+        const print_index = get_print_index_by_date(COLOR, DATE );
+        COLOR.color = COLOR.data[ print_index ].desc;
+    }
+    if(typeof COLOR === 'string'){
+        COLOR = { color: COLOR, debug: false };
+    }
+    apply_to_buttons(COLOR);
+    apply_to_elements(COLOR);
 };
 
-const COLOR = RCTF.parse_color( { } );
 
-log('color: ',COLOR);
 
 

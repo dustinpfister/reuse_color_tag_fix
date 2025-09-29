@@ -1,5 +1,5 @@
 # pending changes
-* In the event of 'auto by color', or 'manual' mode a color selection menu will show up in the form of a collection of buttons
+* In the event of 'auto by color', or 'manual' mode a color selection menu will show up in the form of a canvas element
 
 * The extension injects an additional ctf pane element
 * The CTF pane informs what the current print color is
