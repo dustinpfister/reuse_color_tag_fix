@@ -1,19 +1,43 @@
 <html>
- <head>
+  <head>
    <title>Reuse Color Tag Fix</title>
- </head>
- <body>
- 
-     <img src="./img/icon_128.png" id="logo" width="128" height="100">
-
-     <h3>Color Tag Fix</h3>
-     
-     <label for="checkbox_enabled">enabled:</label>
-     <input type="checkbox" id="checkbox_enabled"><br>
-     
+   <style>
+*{
+    font-family: monospace;
+    font-size: 15px;
+    line-height:30px;
+}
+.main_wrap{
+    width: 240px;
+}
+.header{
+    text-align: center;
+    font-size: 20px;
+}
+#logo{
+    display: block;
+    margin: 0 auto;
+}
+   </style>
+  </head>
+  <body>
+    <div class="main_wrap">
+    
+      <img src="./img/icon_128.png" id="logo" width="128" height="100">
+      
+      <h3 class="header">Color Tag Fix</h3>
+      
+      <label for="checkbox_enabled">enabled:</label>
+      <input type="checkbox" id="checkbox_enabled"><br>
+      <label for="select_mode">mode:</label>
+      <select name="select_mode" id="select_mode">
+         <option value="auto_by_time">Auto By Time</option>
+         <option value="auto_by_time">Auto By Fixed</option>
+         <option value="manual">Manual</option>
+      </select>
+      
+    </div> 
      <script src="popup.js"></script>
-     
- </body>
+  </body>
 </html>
 
-<p></p>

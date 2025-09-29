@@ -26,7 +26,7 @@ const get_json = () => {
 '    }\n' +
 '  ],\n' +
 '  \"permissions\": [\n' +
-'    \"storage\"\n' +
+'    \"storage\", \"activeTab\"\n' +
 '  ],\n' +
 '  \"web_accessible_resources\": [\n' +
 '    {\n' +

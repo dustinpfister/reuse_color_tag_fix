@@ -1,8 +1,15 @@
 # pending changes
 
-* the extension injects an additional ctf pane element
-* a main update app loop
+* In the extension popup menu an 'mode' can be set to 'auto by time', 'auto fixed color', or 'manual'
+* In the event of 'auto by time' the current date will be used to set the color
+* In the event of 'auto by color', or 'manual' mode a color selection menu will show up in the form of a collection of buttons
 
+* The extension injects an additional ctf pane element
+* The CTF pane informs what the current print color is
+* The CTF pane informs what color is currently 25% off, 50% off, and the cull color
+* The CTF pane gives an outlook for the current month and next month
+
+* a main update app loop that will update the color based on the current date as the date changes
 
 * chrome extension will only reload the page if at the data1 portal after enable or disable
 * can define an array of COLOR objects to use with the extension
