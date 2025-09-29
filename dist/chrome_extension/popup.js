@@ -20,3 +20,14 @@ el_enabled.addEventListener('change', (e) => {
     })
 });
 
+const el_mode = document.querySelector('#select_mode');
+chrome.storage.local.get('mode')
+.then((result) => {
+    el_mode.value = result['mode'];
+});
+el_mode.addEventListener('change', (e) => {
+    chrome.storage.local.set({ mode : e.target.value })
+    .then(() => {
+        console.log( 'mode set to :' + e.target.value );
+    });
+});

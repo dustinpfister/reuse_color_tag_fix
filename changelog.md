@@ -1,7 +1,4 @@
 # pending changes
-
-* In the extension popup menu an 'mode' can be set to 'auto by time', 'auto fixed color', or 'manual'
-* In the event of 'auto by time' the current date will be used to set the color
 * In the event of 'auto by color', or 'manual' mode a color selection menu will show up in the form of a collection of buttons
 
 * The extension injects an additional ctf pane element
@@ -16,6 +13,8 @@
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 
 # R6
+* In the extension popup menu a 'mode' can be set to 'auto by time', 'auto fixed color', or 'manual'
+* In the event of 'auto by time' the current date will be used to set the color
 * chrome extension will only reload the page if at the data1 portal after enable or disable
 
 # R5
