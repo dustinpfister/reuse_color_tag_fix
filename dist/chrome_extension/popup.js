@@ -5,6 +5,10 @@ const el_canvas = document.querySelector('#color_canvas');
 const el_reset = document.querySelector('#button_reset');
 //console.log( chrome.scripting.executeScript );
 
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    location.reload();
+});
+
 /********* **********
 HELPER FUNCTIONS
 ********** *********/
@@ -13,7 +17,8 @@ const reload_at_data1 = () => {
         const tab = tabs[0];
         const parts = tab.url.replace('https://', '').split('/');
         if(parts.length >= 3 && parts[0] === 'data1.ithacareuse.org' && parts[1] === 'pricing' && parts[2] === 'portal'){
-            chrome.tabs.reload();
+            chrome.tabs.reload()
+
         }
     });
 };

@@ -1,6 +1,6 @@
 # pending changes
 
-* reload popup page when reset is clicked
+
 
 * The extension injects an additional ctf pane element
 * The CTF pane informs what the current print color is
@@ -19,6 +19,7 @@
 * chrome extension will only reload the page if at the data1 portal after enable or disable
 * In the event of 'auto by color', or 'manual' mode a color selection menu will show up in the form of a canvas element
 * a reset button in the popup menu can be used to reset settings
+* reload popup page when reset is clicked
 
 # R5
 * new apply\_to\_elements function that will update display elements, not just id and className attributes of buttons
