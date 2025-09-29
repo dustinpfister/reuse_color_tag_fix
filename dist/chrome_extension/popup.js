@@ -64,3 +64,15 @@ el_mode.addEventListener('change', (e) => {
         reload_at_data1();
     });
 });
+/********* **********
+SETUP canvas
+********** *********/
+el_canvas.addEventListener('pointerdown', (e) => {
+    const canvas = e.target;
+    const bx = canvas.getBoundingClientRect();
+    const x = Math.floor(e.clientX - bx.left), y = Math.floor(e.clientY - bx.top);
+    const i = Math.floor( Math.floor(y / 64) * 3 + Math.floor(x / 64) );
+    console.log(x, y, i);
+    
+    
+});
