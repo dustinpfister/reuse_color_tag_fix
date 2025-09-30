@@ -1,6 +1,7 @@
 # pending changes
 
-
+* have data1 links in the extension menu
+* see about getting the RCTF api in the js console again
 
 * The extension injects an additional ctf pane element
 * The CTF pane informs what the current print color is
@@ -8,7 +9,6 @@
 * The CTF pane gives an outlook for the current month and next month
 
 * a main update app loop that will update the color based on the current date as the date changes
-
 
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there

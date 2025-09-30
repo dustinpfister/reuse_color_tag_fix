@@ -34,11 +34,31 @@ This bookmarks file was made as an alternative option to the chrome extension, t
 
 The 'chrome\_extension' folder would be the best way to go about fixing the problem in a way in which it will just happen automatically each time the page is reloaded or navigated to by a user. To set this up you will need to go to chrome://extensions then make sure that 'Developer mode' is toggled on. You will then want to click the 'Load unpacked' button and navigate to the root 'chrome\_extension' folder in the dist folder of this repo which is what will need to be selected.
 
-## 2.0 ) How to Build files
+## 2.0 ) What is new in each revision
+
+### R6 - Improved chrome extension menu
+
+The chrome extension menu now allows for a user to select from a collection of modes which are 'auto\_by\_time', 'auto\_by\_fixed', and 'manual'. The auto by time mode will set the color automatically by way of javaScript dates and hard coded setting that are in line with the new 5 color system each time the pricing portal is viewed. The auto by fixed mode will allow a user to choose one of the six original colors from a menu, and that color will also be what is set each time the portal is viewed. Finally there is a manual mode, that also allows the user to select a color to set, but that color WILL NOT be automatically set each time the page is views. So then the manual mode is similar to the bookmarklet forms of the patch that we are all ready using. 
+
+### R5 - Fix of display elements, improved parsing of color string arguments
+
+A new 'apply\_to\_elements function was introduced that will update the display elements of data1 also. This is used in conjunction with the functionally critical 'apply\_to\_buttons', rather than a replacement for it. Another major change is improved parsing and sanitation of color string arguments. This improved parsing process will parse given strings like 'y', 'Y', 'yellow', and 'yElLoW' into 'Yellow'. in addition a base64 encoded string is used as a way to store all valid color string values, if the final parsed color string value does not match one of the values in this string, then the patch will not be applied.
+
+### R4 - Common Build process for all patch forms
+
+### R3 - Bookmarks import file, start of chrome extension.
+
+### R2 - Autoset script form of patch
+
+### R1 - Rushed form of autoset script
+
+### R0 - The original static blue color set color script
+
+## 3.0 ) How to Build files
 
 I am using the nodejs global script called Rollup, as well as one additional custom script, to generate the final distribution files from source files. I have also set up some npm scripts to help make this process easy, but there is still a bit of a setup process here if you do not have everything installed, cloned down, ect. 
 
-### 2.1 ) Check if you have git, nodejs and npm installed to begin with, and install if need be.
+### 3.1 ) Check if you have git, nodejs and npm installed to begin with, and install if need be.
 
 Before installing git, node, and npm, it is possible that one or more might all ready be there. There are a few options when it comes to checking if a command is installed on a Linux system, I like to use the bash built in command 'type'. So there is using 'type' to find the location of node and npm. If these are not installed you will get a 'bash: type: \[commandName\]: not found' message. If they are installed the -v option can be used to check the version numbers of these. The versions that I was using to build are in the example below.
 
@@ -65,7 +85,7 @@ $ sudo apt install git nodejs npm
 
 if the version is out of date, use the '[n npmjs](https://www.npmjs.com/package/n/v/5.0.0)' package to install an updated version of node.
 
-### 2.2) Install rollup as a global script
+### 3.2) Install rollup as a global script
 
 I use rollup to build the static files in both development and minified form. Building these files first is necessary in order to build the bookmarks import file, as the minifored forms of the scripts are used to do just that.
 
@@ -73,7 +93,7 @@ I use rollup to build the static files in both development and minified form. Bu
 $ sudo npm install --global rollup
 ```
 
-### 2.3) Clone down this repo, do an npm install
+### 3.3) Clone down this repo, do an npm install
 
 Use git to clone down a copy of the repo. I am using [uglify-js to minify](https://www.npmjs.com/package/uglify-js/) code into a form that works well for bookmarks.
 
@@ -83,7 +103,7 @@ $ cd reuse_color_tag_fix
 $ npm install
 ```
 
-### 2.4) To build the dist folder files
+### 3.4) To build the dist folder files
 
 Run the npm scripts to build the static files, the autoset script, the bookmarks.html file, and the chrome extension.
 
