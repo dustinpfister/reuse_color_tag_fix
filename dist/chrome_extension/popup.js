@@ -3,12 +3,13 @@ const el_full_menu = document.querySelector('#full_menu');
 const el_mode = document.querySelector('#select_mode');
 const el_canvas = document.querySelector('#color_canvas');
 const el_reset = document.querySelector('#button_reset');
-//console.log( chrome.scripting.executeScript );
-
+const el_reload = document.querySelector('#button_reload');
+/********* **********
+reload popup when tab reloads
+********** *********/
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     location.reload();
 });
-
 /********* **********
 HELPER FUNCTIONS
 ********** *********/
@@ -18,9 +19,14 @@ const reload_at_data1 = () => {
         const parts = tab.url.replace('https://', '').split('/');
         if(parts.length >= 3 && parts[0] === 'data1.ithacareuse.org' && parts[1] === 'pricing' && parts[2] === 'portal'){
             chrome.tabs.reload()
-
         }
     });
+};
+const display_canvas = (bool=true) => {
+    el_canvas.style.display = 'block';
+    if(!bool){
+        el_canvas.style.display = 'none';
+    }
 };
 const display_full_menu = (bool=true) => {
     el_full_menu.style.visibility = 'visible';
@@ -59,7 +65,7 @@ el_enabled.addEventListener('change', (e) => {
     });
 });
 /********* **********
-SETUP reset button
+SETUP reset and reload buttons
 ********** *********/
 el_reset.addEventListener('click', (e) => {
     chrome.storage.local.clear()
@@ -67,12 +73,19 @@ el_reset.addEventListener('click', (e) => {
         reload_at_data1();
     });
 });
+el_reload.addEventListener('click', (e) => {
+    reload_at_data1();
+});
 /********* **********
 SETUP select mode
 ********** *********/
 chrome.storage.local.get('mode')
 .then((result) => {
-    el_mode.value = result['mode'];
+    const mode = result['mode'];
+    el_mode.value = mode;
+    if(mode === 'auto_by_time'){
+        display_canvas(false);
+    }
 });
 el_mode.addEventListener('change', (e) => {
     chrome.storage.local.set({ mode : e.target.value })
@@ -95,5 +108,4 @@ el_canvas.addEventListener('pointerdown', (e) => {
         console.log( 'color_select set to :' + COLORS[i] );
         reload_at_data1();
     });
-    
 });
