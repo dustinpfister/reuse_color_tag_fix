@@ -11,6 +11,17 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     location.reload();
 });
 /********* **********
+Pricing Portal Links
+********** *********/
+['#button_pricing_rmc', '#button_pricing_irc'].forEach((str_id)=>{
+    
+    const el = document.querySelector(str_id);
+    el.addEventListener('click', (e) => {
+        //console.log(e.target.dataset.href);
+        chrome.tabs.update( undefined, { url: e.target.dataset.href } );
+    });
+});
+/********* **********
 HELPER FUNCTIONS
 ********** *********/
 const reload_at_data1 = () => {

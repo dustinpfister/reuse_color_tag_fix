@@ -1,6 +1,6 @@
 # pending changes
 
-* have data1 links in the extension menu
+
 * see about getting the RCTF api in the js console again
 
 * The extension injects an additional ctf pane element
@@ -20,6 +20,7 @@
 * In the event of 'auto by color', or 'manual' mode a color selection menu will show up in the form of a canvas element
 * a reset button in the popup menu can be used to reset settings
 * reload popup page when reset is clicked
+* have data1 links in the extension menu
 
 # R5
 * new apply\_to\_elements function that will update display elements, not just id and className attributes of buttons
