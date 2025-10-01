@@ -23,5 +23,11 @@
   ],
   "permissions": [
     "scripting", "storage", "activeTab"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["colorset_api.js"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }

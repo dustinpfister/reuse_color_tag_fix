@@ -1,7 +1,9 @@
 // un-comment for clear storage test
 //chrome.storage.local.clear();
 
-
+const script = document.createElement('script');
+script.src = chrome.runtime.getURL('colorset_api.js');
+document.body.appendChild(script);
 
 const if_undefined = (result={}, opt={ key: 'enabled', default: true }) => {
     if(result[opt.key] === undefined){
