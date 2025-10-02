@@ -46,13 +46,23 @@ A new 'apply\_to\_elements function was introduced that will update the display 
 
 ### R4 - Common Build process for all patch forms
 
+The static scripts for all colors, the autoset script, and extension are all built using the same common apply to buttons source file.
+
 ### R3 - Bookmarks import file, start of chrome extension.
+
+Started work on the chrome extension. Started using rollup to build static files. NPM script started to build the bookmarks import file.
 
 ### R2 - Autoset script form of patch
 
+Working autoset script
+
 ### R1 - Rushed form of autoset script
 
+Rushed attempt at the autoset script.
+
 ### R0 - The original static blue color set color script
+
+The original static script that sets the buttons to a blue state
 
 ## 3.0 ) How to Build files
 

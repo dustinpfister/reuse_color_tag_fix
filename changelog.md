@@ -6,12 +6,10 @@
 * The CTF pane informs what color is currently 25% off, 50% off, and the cull color
 * The CTF pane gives an outlook for the current month and next month
 
-
-
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 
-# R6
+# R6 - Improved Chrome Extension Menu
 * In the extension popup menu a 'mode' can be set to 'auto by time', 'auto fixed color', or 'manual'
 * In the event of 'auto by time' the current date will be used to set the color
 * chrome extension will only reload the page if at the data1 portal after enable or disable
