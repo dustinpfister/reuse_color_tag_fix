@@ -8,7 +8,7 @@
   >
 </p>
 
-This is the patch to the color tag problem with data1 at Finger Lakes Reuse. We use what many refer to as 'data1' every day when it comes to to printing labels to price items in various departments. A color tag system of sorts is used that differs from white tags in that white tags are a fixed price, while color tags go threw a color discount cycle. We where using a six color system, but a new system was adopted which is a 5 color system. This is fine, as these kinds of adjustments do need to be made from time to time. However the back end source code for data1 was not updated to accommodate this change.
+This is the patch to the color tag problem with data1 at Finger Lakes Reuse. At Reuse a web based system that we all call 'data1' is what we use every day to print labels for incoming items that are donated from the public. A color tag system is used that differs from white tags in that white tags are a fixed price, while color tags go threw a color discount cycle. We where using a six color system, but a new system was adopted which is a 5 color system. This is fine, as these kinds of adjustments do need to be made from time to time. However the back end source code for data1 was not updated to accommodate this change.
 
 This is where this software patch comes into play. It is a collection of scripts that can be injected into the javaScript console to set the proper tag color with respect to this new system, rather than the old system. On top of that it is also a bookmark import file that can be used to import a collection of [Bookmarklets](https://en.wikipedia.org/wiki/Bookmarklet) of said scripts into a web browser to set a desired tag color. Finally there is now a chrome extension form of the patch that can be used to inject the patch each time the pages is visited. This means that as long as the chrome extension is installed, and working as it should, people do not need to bother injecting code into the javaScript console, or click a bookmark each time that they navigate to the data1 pricing portal.
 
@@ -34,11 +34,13 @@ This bookmarks file was made as an alternative option to the chrome extension, t
 
 The 'chrome\_extension' folder would be the best way to go about fixing the problem in a way in which it will just happen automatically each time the page is reloaded or navigated to by a user. To set this up you will need to go to chrome://extensions then make sure that 'Developer mode' is toggled on. You will then want to click the 'Load unpacked' button and navigate to the root 'chrome\_extension' folder in the dist folder of this repo which is what will need to be selected.
 
-## 2.0 ) What is new in each revision
+## 2 ) What is new in each revision
+
+In this section I will write a thing or two about each revision of the color tag fix patch as they come out.
 
 ### R6 - Improved chrome extension menu
 
-The chrome extension menu now allows for a user to select from a collection of modes which are 'auto\_by\_time', 'auto\_by\_fixed', and 'manual'. The auto by time mode will set the color automatically by way of javaScript dates and hard coded setting that are in line with the new 5 color system each time the pricing portal is viewed. The auto by fixed mode will allow a user to choose one of the six original colors from a menu, and that color will also be what is set each time the portal is viewed. Finally there is a manual mode, that also allows the user to select a color to set, but that color WILL NOT be automatically set each time the page is views. So then the manual mode is similar to the bookmarklet forms of the patch that we are all ready using. 
+The chrome extension menu now allows for a user to select from a collection of modes which are 'auto\_by\_time', 'auto\_by\_fixed', and 'manual'. The auto by time mode will set the color automatically by way of javaScript dates and hard coded setting that are in line with the new 5 color system each time the pricing portal is viewed. The auto by fixed mode will allow a user to choose one of the six original colors from a menu, and that color will also be what is set each time the portal is viewed. Finally there is a manual mode, that also allows the user to select a color to set, but that color WILL NOT be automatically set each time the page is views. So then the manual mode is similar to the various bookmarklet forms of the patch that we are all ready using. 
 
 ### R5 - Fix of display elements, improved parsing of color string arguments
 
@@ -54,7 +56,7 @@ Started work on the chrome extension. Started using rollup to build static files
 
 ### R2 - Autoset script form of patch
 
-Working autoset script
+Working autoset script finished that will automatically set the button color using javaScript dates and a hard coded configuration.
 
 ### R1 - Rushed form of autoset script
 
@@ -64,7 +66,7 @@ Rushed attempt at the autoset script.
 
 The original static script that sets the buttons to a blue state
 
-## 3.0 ) How to Build files
+## 3 ) How to Build files
 
 I am using the nodejs global script called Rollup, as well as one additional custom script, to generate the final distribution files from source files. I have also set up some npm scripts to help make this process easy, but there is still a bit of a setup process here if you do not have everything installed, cloned down, ect. 
 
