@@ -1,10 +1,13 @@
 # pending changes
 
-* a main update app loop that will update the color based on the current date as the date changes
-* The extension injects an additional ctf pane element
+* new get\_html\_color method that the extension will used to find what the data1 back-end is delivering
+* The extension injects an additional CTF pane element
+
+* The CTF pane informs what color is being sent by the backend, and what the current color fix color is
 * The CTF pane informs what the current print color is
 * The CTF pane informs what color is currently 25% off, 50% off, and the cull color
 * The CTF pane gives an outlook for the current month and next month
+* a main update app loop that will update the color based on the current date as the date changes
 
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
