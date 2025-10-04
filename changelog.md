@@ -13,6 +13,7 @@
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 
 # R7 - 
+* VERSION is displayed in popup menu
 * rollup.config.extension.js can now be used to build the main index.js file for the extension
 
 # R6 - Improved Chrome Extension Menu

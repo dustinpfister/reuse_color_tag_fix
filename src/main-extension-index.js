@@ -6,17 +6,14 @@ document.body.appendChild(script);
 // the inject_version plugin will inject the version number here:
 //[INJECT_VERSION]
 
-console.log('Setting up Color Tag Fix ' + VERSION);
-
-
 const get = (opt) => {
     return chrome.storage.local.get(opt);
 };
 const set = (opt) => {
-    return chrome.storage.local.set(opt)
+    return chrome.storage.local.set(opt);
 }
 
-const if_undefined = (result={}, opt={ key: 'enabled', default: true }) => {
+const if_undefined = (result={}, opt={ key: 'enabled', default: true}) => {
     if(result[opt.key] === undefined){
         console.log( opt.key + ' key is not defined! Setting a default value : ' + opt.default );
         const store = {};
@@ -29,9 +26,16 @@ const if_undefined = (result={}, opt={ key: 'enabled', default: true }) => {
     return result;
 };
 
-get('enabled')
+get('VERSION')
+.then( ( result ) => {
+    return if_undefined(result, { key: 'VERSION', default: VERSION });
+})
+.then((result)=>{
+    console.log('Setting up Color Tag Fix ' + result.VERSION);    
+    return get('enabled');
+})
 .then( (result) => {
-    return if_undefined(result, { key: 'enabled', default: true, VERSION: VERSION });
+    return if_undefined(result);
 })
 .then((result)=>{
     if(result.enabled){
@@ -89,8 +93,11 @@ get('enabled')
     console.log('there was a problem with setup: ');
     console.log(e);
 })
-.then((result)=>{
-    console.log('setup is done');
-    console.log(result);
+.then(()=>{
+    get()
+    .then((result)=>{
+        console.log('setup is done, yes.');
+        console.log(result);
+    });
 });
 

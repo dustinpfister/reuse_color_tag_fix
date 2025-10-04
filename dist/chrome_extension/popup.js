@@ -4,6 +4,14 @@ const el_mode = document.querySelector('#select_mode');
 const el_canvas = document.querySelector('#color_canvas');
 const el_reset = document.querySelector('#button_reset');
 const el_reload = document.querySelector('#button_reload');
+const el_version = document.querySelector('#version');
+
+
+
+chrome.storage.local.get('VERSION')
+.then((result) => {
+    el_version.innerText = result.VERSION || '?';;
+});
 /********* **********
 reload popup when tab reloads
 ********** *********/
@@ -13,11 +21,9 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 /********* **********
 Pricing Portal Links
 ********** *********/
-['#button_pricing_rmc', '#button_pricing_irc'].forEach((str_id)=>{
-    
+['#button_pricing_rmc', '#button_pricing_irc'].forEach((str_id)=>{  
     const el = document.querySelector(str_id);
     el.addEventListener('click', (e) => {
-        //console.log(e.target.dataset.href);
         chrome.tabs.update( undefined, { url: e.target.dataset.href } );
     });
 });
