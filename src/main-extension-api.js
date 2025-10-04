@@ -1,6 +1,7 @@
 import { log, mod } from './utils.js';
 import { get_print_index_by_date } from './get_print_index_by_date.js';
 import { get_html_color } from './get_html_color.js';
+import { inject_pane, remove_pane } from './inject_pane.js';
 import { apply_to_buttons } from './apply_to_buttons.js';
 import { apply_to_elements } from './apply_to_elements.js';
 import { parse_color } from './parse_color.js';
@@ -11,6 +12,18 @@ import { parse_color } from './parse_color.js';
 const RCTF = window.RCTF = {};
 
 RCTF.VERSION = VERSION;
+
+RCTF.setup_pane = (COLOR) => {
+
+    const el_pane = document.createElement('p');
+    el_pane.innerHTML = '<p>data1 backend color is: '+
+    '<span style=\"color:' + COLOR.back_color + ';text-shadow: 1px 1px 0 black;\">' +  COLOR.back_color + '</span>,'+
+    ' RCTF color is' + 
+    ' <span style=\"color:' + COLOR.color + ';text-shadow: 1px 1px 0 black;\">' + COLOR.color + '</span></p>';
+    
+
+    inject_pane('ctf', 'Color Tag Fix', el_pane);
+};
 
 RCTF.parse_color = ( obj = {} ) => {
     if(obj.constructor.name === 'Array'){
