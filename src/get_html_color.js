@@ -7,9 +7,10 @@ const get_html_color = function(){
         const el = buttons[i];
         const arr_id = el.id.split('');
         if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
-             console.log( validate_color_key( el.id[0]  ));
+             return validate_color_key( el.id[0]  );
         }
         i += 1;
     }
+    return '';
 };
 export { get_html_color };

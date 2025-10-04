@@ -58,6 +58,20 @@
         return false;
     };
 
+    const get_html_color = function(){
+        const buttons = document.getElementsByTagName('button');
+        let i = 0, len = buttons.length;
+        while(i < len){
+            const el = buttons[i];
+            const arr_id = el.id.split('');
+            if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
+                 return validate_color_key( el.id[0]  );
+            }
+            i += 1;
+        }
+        return '';
+    };
+
     const apply_to_buttons = function( COLOR = {} ){
         COLOR.color = validate_color_key( COLOR.color );
         if(!COLOR.color){
@@ -145,6 +159,24 @@
         if(typeof COLOR === 'string'){
             COLOR = { color: COLOR, debug: false };
         }
+        
+        COLOR.back_color = get_html_color();
+        
+        if(COLOR.back_color === COLOR.color){
+            console.log('');
+            console.log('both data1 and CTF color are:' + COLOR.color );
+            console.log('unless you are using a custom config, you may be able to remove this extension now.');
+            console.log('');
+        }
+        
+        if(COLOR.back_color != COLOR.color){
+            console.log('');
+            console.log('data1 backend color is: ' + COLOR.back_color );
+            console.log('CTF color is: ' + COLOR.color );
+            console.log('Please continue using this extension.');
+            console.log('');
+        }
+        
         apply_to_buttons(COLOR);
         apply_to_elements(COLOR);
     };

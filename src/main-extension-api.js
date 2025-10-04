@@ -1,5 +1,6 @@
 import { log, mod } from './utils.js';
 import { get_print_index_by_date } from './get_print_index_by_date.js';
+import { get_html_color } from './get_html_color.js';
 import { apply_to_buttons } from './apply_to_buttons.js';
 import { apply_to_elements } from './apply_to_elements.js';
 import { parse_color } from './parse_color.js';
@@ -28,6 +29,24 @@ RCTF.run_color_tag_fix = ( COLOR = RCTF.COLOR, DATE = new Date() ) => {
     if(typeof COLOR === 'string'){
         COLOR = { color: COLOR, debug: false };
     }
+    
+    COLOR.back_color = get_html_color();
+    
+    if(COLOR.back_color === COLOR.color){
+        console.log('');
+        console.log('both data1 and CTF color are:' + COLOR.color );
+        console.log('unless you are using a custom config, you may be able to remove this extension now.');
+        console.log('');
+    }
+    
+    if(COLOR.back_color != COLOR.color){
+        console.log('');
+        console.log('data1 backend color is: ' + COLOR.back_color );
+        console.log('CTF color is: ' + COLOR.color );
+        console.log('Please continue using this extension.');
+        console.log('');
+    }
+    
     apply_to_buttons(COLOR);
     apply_to_elements(COLOR);
 };

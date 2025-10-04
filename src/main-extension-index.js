@@ -1,4 +1,3 @@
-
 const script = document.createElement('script');
 script.src = chrome.runtime.getURL('colorset_api.js');
 document.body.appendChild(script);
@@ -78,7 +77,6 @@ get('VERSION')
                 console.log('running a manual color fix for color: ' + result.color_select );
                 console.log('the count for this is :' + result.manual_count);
                 result.manual_count -= 1;
-
                 RCTF.run_color_tag_fix( result.color_select );
                 return set({ manual_count: result.manual_count })
                 .then(()=>{
@@ -96,7 +94,7 @@ get('VERSION')
 .then(()=>{
     get()
     .then((result)=>{
-        console.log('setup is done, yes.');
+        console.log('setup is done');
         console.log(result);
     });
 });
