@@ -14,7 +14,7 @@
   },
   "content_scripts": [
     {
-      "js": [ "patch.js", "colorset_api.js" ],
+      "js": [ "index.js", "colorset_api.js" ],
       "matches": [
         "https://data1.ithacareuse.org/pricing/portal/RMC/",
         "https://data1.ithacareuse.org/pricing/portal/IRC/"

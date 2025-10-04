@@ -18,7 +18,7 @@ const get_json = () => {
 '  },\n' +
 '  \"content_scripts\": [\n' +
 '    {\n' +
-'      \"js\": [ \"patch.js\", \"colorset_api.js\" ],\n' +
+'      \"js\": [ \"index.js\", \"colorset_api.js\" ],\n' +
 '      \"matches\": [\n' +
 '        \"https://data1.ithacareuse.org/pricing/portal/RMC/\",\n' +
 '        \"https://data1.ithacareuse.org/pricing/portal/IRC/\"\n' +

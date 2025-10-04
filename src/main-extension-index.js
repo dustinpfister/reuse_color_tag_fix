@@ -1,9 +1,12 @@
-// un-comment for clear storage test
-//chrome.storage.local.clear();
 
 const script = document.createElement('script');
 script.src = chrome.runtime.getURL('colorset_api.js');
 document.body.appendChild(script);
+
+// the inject_version plugin will inject the version number here:
+//[INJECT_VERSION]
+
+console.log('Setting up Color Tag Fix ' + VERSION);
 
 const if_undefined = (result={}, opt={ key: 'enabled', default: true }) => {
     if(result[opt.key] === undefined){
@@ -78,9 +81,3 @@ chrome.storage.local.get('enabled')
     console.log(e);
 });
 
-
-
-
-
-     
-     

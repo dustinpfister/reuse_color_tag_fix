@@ -121,7 +121,12 @@
         return COLOR_ARRAY_DEFAULT;
     };
 
+    // the inject_version plugin will inject the version number here:
+    const VERSION = "R7";
+
     const RCTF = window.RCTF = {};
+
+    RCTF.VERSION = VERSION;
 
     RCTF.parse_color = ( obj = {} ) => {
         if(obj.constructor.name === 'Array'){

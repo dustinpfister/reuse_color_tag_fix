@@ -12,6 +12,9 @@
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 
+# R7 - 
+* rollup.config.extension.js can now be used to build the main index.js file for the extension
+
 # R6 - Improved Chrome Extension Menu
 * In the extension popup menu a 'mode' can be set to 'auto by time', 'auto fixed color', or 'manual'
 * In the event of 'auto by time' the current date will be used to set the color

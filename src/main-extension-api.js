@@ -4,7 +4,12 @@ import { apply_to_buttons } from './apply_to_buttons.js';
 import { apply_to_elements } from './apply_to_elements.js';
 import { parse_color } from './parse_color.js';
 
+// the inject_version plugin will inject the version number here:
+//[INJECT_VERSION]
+
 const RCTF = window.RCTF = {};
+
+RCTF.VERSION = VERSION;
 
 RCTF.parse_color = ( obj = {} ) => {
     if(obj.constructor.name === 'Array'){
