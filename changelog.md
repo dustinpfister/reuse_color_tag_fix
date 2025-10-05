@@ -1,8 +1,10 @@
 # pending changes
 
 
+* The CTF pane informs what the current config is
 * The CTF pane informs what color is currently 25% off, 50% off, and the cull color
 * The CTF pane gives an outlook for the current month and next month
+
 * a main update app loop that will update the color based on the current date as the date changes
 
 * can define an array of COLOR objects to use with the extension

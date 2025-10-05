@@ -13,6 +13,7 @@ const RCTF = window.RCTF = {};
 
 RCTF.VERSION = VERSION;
 
+const COMMON_WRAP_STYLE = 'border:1px solid black;background:#afafaf;padding:5px;margin-bottom:15px;';
 
 const get_data1_status_html = (COLOR={}) => {
     let html = '<h3>data1 backend status</h3>' + 
@@ -28,7 +29,16 @@ const get_data1_status_html = (COLOR={}) => {
     }
     const el = document.createElement('div');
     el.innerHTML = html;
-    el.setAttribute('style', 'border:1px solid black;background:#afafaf;padding:5px;');
+    el.setAttribute('style', COMMON_WRAP_STYLE);
+    return el;
+};
+
+const get_color_config_html = ( COLOR={} ) => {
+    let html = '<h3>CTF config </h3>';
+    
+    const el = document.createElement('div');
+    el.innerHTML = html;
+    el.setAttribute('style', COMMON_WRAP_STYLE);
     return el;
 };
 
@@ -36,7 +46,9 @@ RCTF.setup_pane = (COLOR) => {
 
     const el_wrap = document.createElement('div');
     
-    el_wrap.appendChild( get_data1_status_html(COLOR) )
+    el_wrap.appendChild( get_data1_status_html(COLOR) );
+    
+    el_wrap.appendChild( get_color_config_html(COLOR) );
     
     inject_pane('ctf', 'Color Tag Fix ' + RCTF.VERSION, el_wrap);
 };
