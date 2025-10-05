@@ -5,6 +5,7 @@ import { inject_pane, remove_pane } from './inject_pane.js';
 import { apply_to_buttons } from './apply_to_buttons.js';
 import { apply_to_elements } from './apply_to_elements.js';
 import { parse_color } from './parse_color.js';
+import { gen_outlook } from './gen_outlook.js';
 
 // the inject_version plugin will inject the version number here:
 //[INJECT_VERSION]
@@ -108,6 +109,10 @@ RCTF.run_color_tag_fix = ( COLOR = RCTF.COLOR, DATE = new Date() ) => {
     
     apply_to_buttons(COLOR);
     apply_to_elements(COLOR);
+};
+
+RCTF.gen_outlook = ( COLOR = RCTF.COLOR, year='2025', month=0) => {
+    return gen_outlook(COLOR, year, month);
 };
 
 RCTF.reset = () => {

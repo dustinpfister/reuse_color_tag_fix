@@ -1,9 +1,10 @@
 # pending changes
 
-
+* new RCTF.gen_outlook method that will give an outlook for print colors for a given year and month
+* CTF pane gives an outlook for the current month and next month
 
 * The CTF pane informs what color is currently 25% off, 50% off, and the cull color
-* The CTF pane gives an outlook for the current month and next month
+
 
 * a main update app loop that will update the color based on the current date as the date changes
 
