@@ -36,6 +36,24 @@ const get_data1_status_html = (COLOR={}) => {
 const get_color_config_html = ( COLOR={} ) => {
     let html = '<h3>CTF config </h3>';
     
+    let i = 0;
+    const len = COLOR.data.length;
+    html += '<span>first tuesday : ' + COLOR.first_tuesday.toString() + '<br>';
+    html += 'first index : ' + COLOR.first_index + '<br>';
+    html += 'ascending : ' + COLOR.ascending + '<br><br></span>';
+    html += '<table>';
+    html += '<tr><th>index</th><th>Color Name</th></tr>';
+    while(i < len){
+        const colorObj = COLOR.data[i];
+        const first_style = i === COLOR.first_index ? 'border: 1px solid black;' : '';
+        html += '<tr style=\"' + first_style + '\">'+
+            '<td style=\"padding:5px;\">' + i + '</td>'+
+            '<td style=\"padding:5px;\">' + colorObj.desc + '</td>'+
+        '</tr>';
+        i += 1;
+    }
+    html += '</table>';
+    
     const el = document.createElement('div');
     el.innerHTML = html;
     el.setAttribute('style', COMMON_WRAP_STYLE);
