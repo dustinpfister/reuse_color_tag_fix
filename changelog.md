@@ -1,7 +1,6 @@
 # pending changes
 
-* The CTF pane informs what color is being sent by the backend, and what the current color fix color is
-* The CTF pane informs what the current print color is
+
 * The CTF pane informs what color is currently 25% off, 50% off, and the cull color
 * The CTF pane gives an outlook for the current month and next month
 * a main update app loop that will update the color based on the current date as the date changes
@@ -14,6 +13,7 @@
 * rollup.config.extension.js can now be used to build the main index.js file for the extension
 * new get\_html\_color method that the extension will used to find what the data1 back-end is delivering
 * The extension injects an additional CTF pane element
+* The CTF pane informs what color is being sent by the backend, and what the current color fix color is
 
 # R6 - Improved Chrome Extension Menu
 * In the extension popup menu a 'mode' can be set to 'auto by time', 'auto fixed color', or 'manual'

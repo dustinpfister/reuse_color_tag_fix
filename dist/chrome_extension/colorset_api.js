@@ -182,14 +182,32 @@
 
     RCTF.VERSION = VERSION;
 
+
+    const get_data1_status_html = (COLOR={}) => {
+        let html = '<h3>data1 backend status</h3>' + 
+        '<p>The data1 printing color is: '+
+        '<span style=\"color:' + COLOR.back_color + ';text-shadow: 1px 1px 0 black;\">' +  COLOR.back_color + '</span>'+
+        ', and the RCTF color is: ' + 
+        ' <span style=\"color:' + COLOR.color + ';text-shadow: 1px 1px 0 black;\">' + COLOR.color + '</span></p>';
+        if(COLOR.back_color != COLOR.color){
+            html += '<p style=\"color:red;border:1px solid red;padding:10px;background:#ffffff;\">The CTF color does not match up with what data1 is rendering server side. Please continue to use this chrome extension to make sure you are printing the current color</p>';
+        }
+        if(COLOR.back_color === COLOR.color){
+            html += '<p style=\"color:green;border:1px solid green;padding:10px;background:#ffffff;\">The CTF color does Match up with data1. Unless you are experimenting with a custom configuration, this is a good sign that there has been a patch to the data1 back end code. As such you can remove the CTF extension if this is in fact the case.</p>';
+        }
+        const el = document.createElement('div');
+        el.innerHTML = html;
+        el.setAttribute('style', 'border:1px solid black;background:#afafaf;padding:5px;');
+        return el;
+    };
+
     RCTF.setup_pane = (COLOR) => {
 
-        const el_pane = document.createElement('p');
-        el_pane.innerHTML = 'data1 backend color is: <span style=\"color:' + COLOR.back_color + ';text-shadow: 1px 1px 0 black;\">' +  COLOR.back_color + '</span>,'+
-        ' RCTF color is <span style=\"color:' + COLOR.color + ';text-shadow: 1px 1px 0 black;\">' + COLOR.color + '</span>';
+        const el_wrap = document.createElement('div');
         
-
-        inject_pane('ctf', 'Color Tag Fix', el_pane);
+        el_wrap.appendChild( get_data1_status_html(COLOR) );
+        
+        inject_pane('ctf', 'Color Tag Fix ' + RCTF.VERSION, el_wrap);
     };
 
     RCTF.parse_color = ( obj = {} ) => {
