@@ -1,6 +1,21 @@
 # Planed Revisions
 
-## RX - update loop
+## R12 - Game
+* new pane that is a video game
+* as production goals are reached features are unlocked
+
+## R11 - Pricing Goals
+* Pricing Goal data can be set, and automatically updated to new goals
+
+## R10 - Scrape production data
+* RCTF will scrape raw production data by scripting http get requests to data1 by a set delay
+* raw production data is then processed into clean workable JSON data
+* A production bar can then be displayed in the data1 pricing portal
+* Production can be displayed for both IRC and RMC
+* Top five producers can be displayed
+* the delay can be adjusted in the CTF pane
+
+## R9 - update loop
 * a main update app loop that will update the color based on the current date as the date changes
 * main update loop will not be active if in 'auto\_by\_fixed' or 'manual' mode
 * The CTF pane displays info about when the next color update will happen
@@ -8,7 +23,7 @@
 * CTF pane gives an outlook for the next month
 * The CTF pane informs what color is currently 25% off, 50% off, and the cull color
 
-## RX - set a local config
+## R8 - set a local config
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 
