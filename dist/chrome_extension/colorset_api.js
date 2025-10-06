@@ -205,6 +205,53 @@
 
     RCTF.VERSION = VERSION;
 
+    RCTF.parse_color = ( obj = {} ) => {
+        if(obj.constructor.name === 'Array'){
+            return parse_color.array(obj);
+        }
+        return parse_color.object( obj );
+    };
+
+    RCTF.COLOR = RCTF.parse_color( );
+
+    RCTF.run_color_tag_fix = ( COLOR = RCTF.COLOR, DATE = new Date() ) => {
+        if(typeof COLOR === 'object'){
+            const print_index = get_print_index_by_date(COLOR, DATE );
+            COLOR.color = COLOR.data[ print_index ].desc;
+        }
+        if(typeof COLOR === 'string'){
+            COLOR = { color: COLOR, debug: false };
+        }
+        
+        COLOR.back_color = get_html_color();
+        
+        if(COLOR.back_color === COLOR.color){
+            console.log('');
+            console.log('both data1 and CTF color are:' + COLOR.color );
+            console.log('unless you are using a custom config, you may be able to remove this extension now.');
+            console.log('');
+        }
+        
+        if(COLOR.back_color != COLOR.color){
+            console.log('');
+            console.log('data1 backend color is: ' + COLOR.back_color );
+            console.log('CTF color is: ' + COLOR.color );
+            console.log('Please continue using this extension.');
+            console.log('');
+        }
+        
+        apply_to_buttons(COLOR);
+        apply_to_elements(COLOR);
+    };
+
+    RCTF.gen_outlook = ( COLOR = RCTF.COLOR, year='2025', month=0) => {
+        return gen_outlook(COLOR, year, month);
+    };
+
+    RCTF.reset = () => {
+       return chrome.storage.local.clear();
+    };
+
     const COMMON_WRAP_STYLE = 'border:1px solid black;background:#afafaf;padding:5px;margin-bottom:15px;';
 
     const get_data1_status_html = (COLOR={}) => {
@@ -252,6 +299,40 @@
         return el;
     };
 
+    const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
+        let html = '<h3> Outlook </h3>';
+        
+        const result = RCTF.gen_outlook( COLOR, date.getFullYear(), date.getMonth() );
+        
+        let week = 0;
+        const wrap_size = CELL_SIZE * 6;
+        html += '<div style="position:relative;width:'+wrap_size+'px;height:'+wrap_size+'px;">';
+        
+        console.log(result.days);
+        
+        result.days.forEach((dayObj) => {
+            const wd = dayObj.week_day;
+            const x = Math.round( wd * CELL_SIZE );
+            const y = Math.round( week * CELL_SIZE );
+            
+            console.log(x);
+            const css_str = 'position:absolute;left:' + x + 'px;top:' + y + 'px;'+
+            'width:' + CELL_SIZE + 'px;height:' + CELL_SIZE + 'px;'+
+            'background:' + dayObj.color + ';' +
+            'border:1px solid black;padding:5px;';
+            html += '<div style=\"' + css_str + '\">' + dayObj.day + '</div>';
+            if(wd === 6){
+                week += 1;
+            }
+        });
+        html += '</div>';
+        
+        const el = document.createElement('div');
+        el.innerHTML = html;
+        el.setAttribute('style', COMMON_WRAP_STYLE);
+        return el;
+    };
+
     RCTF.setup_pane = (COLOR) => {
 
         const el_wrap = document.createElement('div');
@@ -260,54 +341,9 @@
         
         el_wrap.appendChild( get_color_config_html(COLOR) );
         
+        el_wrap.appendChild( get_outlook_html( COLOR ) );
+        
         inject_pane('ctf', 'Color Tag Fix ' + RCTF.VERSION, el_wrap);
-    };
-
-    RCTF.parse_color = ( obj = {} ) => {
-        if(obj.constructor.name === 'Array'){
-            return parse_color.array(obj);
-        }
-        return parse_color.object( obj );
-    };
-
-    RCTF.COLOR = RCTF.parse_color( );
-
-    RCTF.run_color_tag_fix = ( COLOR = RCTF.COLOR, DATE = new Date() ) => {
-        if(typeof COLOR === 'object'){
-            const print_index = get_print_index_by_date(COLOR, DATE );
-            COLOR.color = COLOR.data[ print_index ].desc;
-        }
-        if(typeof COLOR === 'string'){
-            COLOR = { color: COLOR, debug: false };
-        }
-        
-        COLOR.back_color = get_html_color();
-        
-        if(COLOR.back_color === COLOR.color){
-            console.log('');
-            console.log('both data1 and CTF color are:' + COLOR.color );
-            console.log('unless you are using a custom config, you may be able to remove this extension now.');
-            console.log('');
-        }
-        
-        if(COLOR.back_color != COLOR.color){
-            console.log('');
-            console.log('data1 backend color is: ' + COLOR.back_color );
-            console.log('CTF color is: ' + COLOR.color );
-            console.log('Please continue using this extension.');
-            console.log('');
-        }
-        
-        apply_to_buttons(COLOR);
-        apply_to_elements(COLOR);
-    };
-
-    RCTF.gen_outlook = ( COLOR = RCTF.COLOR, year='2025', month=0) => {
-        return gen_outlook(COLOR, year, month);
-    };
-
-    RCTF.reset = () => {
-       return chrome.storage.local.clear();
     };
 
 })();
