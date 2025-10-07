@@ -110,15 +110,10 @@ const get_color_config_html = ( COLOR={} ) => {
 
 const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
     let html = '<h3> Outlook </h3>';
-    
     const result = RCTF.gen_outlook( COLOR, date.getFullYear(), date.getMonth() );
-    
     let week = 0;
     const wrap_size = CELL_SIZE * 6;
     html += '<div style="position:relative;width:'+wrap_size+'px;height:'+wrap_size+'px;">'
-    
-    console.log(result.days);
-    
     result.days.forEach((dayObj) => {
         const wd = dayObj.week_day;
         const x = Math.round( wd * CELL_SIZE )
@@ -135,7 +130,6 @@ const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
         }
     });
     html += '</div>';
-    
     const el = document.createElement('div');
     el.innerHTML = html;
     el.setAttribute('style', COMMON_WRAP_STYLE);
@@ -143,15 +137,10 @@ const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
 };
 
 RCTF.setup_pane = (COLOR) => {
-
     const el_wrap = document.createElement('div');
-    
     el_wrap.appendChild( get_data1_status_html(COLOR) );
-    
     el_wrap.appendChild( get_color_config_html(COLOR) );
-    
-    el_wrap.appendChild( get_outlook_html( COLOR ) );
-    
+    el_wrap.appendChild( get_outlook_html( COLOR ) );    
     inject_pane('ctf', 'Color Tag Fix ' + RCTF.VERSION, el_wrap);
 };
 

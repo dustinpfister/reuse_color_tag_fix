@@ -26,9 +26,10 @@
 ## R8 - set a local config
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
+* outlook will change
+* outlook in CTF pane will change depending on current mode.
 
 # Pending changes for current Revision (R7)
-* outlook in CTF pane will change depending on current mode.
 
 ## R7 - CTF pane element
 * VERSION is displayed in popup menu

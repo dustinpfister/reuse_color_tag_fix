@@ -38,6 +38,10 @@ The 'chrome\_extension' folder would be the best way to go about fixing the prob
 
 In this section I will write a thing or two about each revision of the color tag fix patch as they come out.
 
+### R7 - RCTF info pane
+
+When using the chrome extension an info pane will show up with the other panes such as the current color tag, white tags, ect. This info pane will display info that has to do with the status of the elements that are sent out by the data1 backend, the state of the config that is used, and an outlook for the current month when it comes to up coming color tag chages.
+
 ### R6 - Improved chrome extension menu
 
 The chrome extension menu now allows for a user to select from a collection of modes which are 'auto\_by\_time', 'auto\_by\_fixed', and 'manual'. The auto by time mode will set the color automatically by way of javaScript dates and hard coded setting that are in line with the new 5 color system each time the pricing portal is viewed. The auto by fixed mode will allow a user to choose one of the six original colors from a menu, and that color will also be what is set each time the portal is viewed. Finally there is a manual mode, that also allows the user to select a color to set, but that color WILL NOT be automatically set each time the page is views. So then the manual mode is similar to the various bookmarklet forms of the patch that we are all ready using. 
