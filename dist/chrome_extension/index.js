@@ -1,5 +1,5 @@
 /********** ********** **********
-  color-tag-fix, R7-extension_index, color-Auto
+  color-tag-fix, R8-extension_index, color-Auto
   by: Dustin Pfister 
   e-mail: dustin.pfister@fingerlakesreuse.org  
   github: https://github.com/dustinpfister/reuse_color_tag_fix 
@@ -12,7 +12,7 @@
     document.body.appendChild(script);
 
     // the inject_version plugin will inject the version number here:
-    const VERSION = "R7";
+    const VERSION = "R8";
 
     const get = (opt) => {
         return chrome.storage.local.get(opt);
@@ -105,9 +105,8 @@
         .then((result)=>{
             console.log('setup is done');
             console.log(result);
-            
-            RCTF.setup_pane(RCTF.COLOR);
-            
+            //RCTF.setup_pane(RCTF.COLOR);
+            //RCTF.update_pane(RCTF.COLOR, new Date());
         });
     });
 

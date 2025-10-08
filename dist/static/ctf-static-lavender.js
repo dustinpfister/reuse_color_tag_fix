@@ -1,5 +1,5 @@
 /********** ********** **********
-  color-tag-fix, R7-static, color-Lavender
+  color-tag-fix, R8-static, color-Lavender
   by: Dustin Pfister 
   e-mail: dustin.pfister@fingerlakesreuse.org  
   github: https://github.com/dustinpfister/reuse_color_tag_fix 

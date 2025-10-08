@@ -1,5 +1,5 @@
 /********** ********** **********
-  color-tag-fix, R7-autoset, color-Auto
+  color-tag-fix, R8-autoset, color-Auto
   by: Dustin Pfister 
   e-mail: dustin.pfister@fingerlakesreuse.org  
   github: https://github.com/dustinpfister/reuse_color_tag_fix 

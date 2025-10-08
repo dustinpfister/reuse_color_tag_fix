@@ -23,13 +23,21 @@
 * CTF pane gives an outlook for the next month
 * The CTF pane informs what color is currently 25% off, 50% off, and the cull color
 
-## R8 - set a local config
+
+# Pending changes for current Revision
+
+
+
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 * outlook will change
 * outlook in CTF pane will change depending on current mode.
 
-# Pending changes for current Revision (R7)
+# Change Log History
+
+## R8 - set a local config
+* have a update\_pane method in main-extension-api
+* make RCTF.setup\_pane private and only called in update\_pane if the pane is not there to begin with
 
 ## R7 - CTF pane element
 * VERSION is displayed in popup menu

@@ -1,5 +1,5 @@
 /********** ********** **********
-  color-tag-fix, R7-colorset_api, color-Auto
+  color-tag-fix, R8-colorset_api, color-Auto
   by: Dustin Pfister 
   e-mail: dustin.pfister@fingerlakesreuse.org  
   github: https://github.com/dustinpfister/reuse_color_tag_fix 
@@ -199,7 +199,7 @@
     };
 
     // the inject_version plugin will inject the version number here:
-    const VERSION = "R7";
+    const VERSION = "R8";
 
     const RCTF = window.RCTF = {};
 
@@ -214,35 +214,7 @@
 
     RCTF.COLOR = RCTF.parse_color( );
 
-    RCTF.run_color_tag_fix = ( COLOR = RCTF.COLOR, DATE = new Date() ) => {
-        if(typeof COLOR === 'object'){
-            const print_index = get_print_index_by_date(COLOR, DATE );
-            COLOR.color = COLOR.data[ print_index ].desc;
-        }
-        if(typeof COLOR === 'string'){
-            COLOR = { color: COLOR, debug: false };
-        }
-        
-        COLOR.back_color = get_html_color();
-        
-        if(COLOR.back_color === COLOR.color){
-            console.log('');
-            console.log('both data1 and CTF color are:' + COLOR.color );
-            console.log('unless you are using a custom config, you may be able to remove this extension now.');
-            console.log('');
-        }
-        
-        if(COLOR.back_color != COLOR.color){
-            console.log('');
-            console.log('data1 backend color is: ' + COLOR.back_color );
-            console.log('CTF color is: ' + COLOR.color );
-            console.log('Please continue using this extension.');
-            console.log('');
-        }
-        
-        apply_to_buttons(COLOR);
-        apply_to_elements(COLOR);
-    };
+
 
     RCTF.gen_outlook = ( COLOR = RCTF.COLOR, year='2025', month=0) => {
         return gen_outlook(COLOR, year, month);
@@ -301,21 +273,14 @@
 
     const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
         let html = '<h3> Outlook </h3>';
-        
         const result = RCTF.gen_outlook( COLOR, date.getFullYear(), date.getMonth() );
-        
         let week = 0;
         const wrap_size = CELL_SIZE * 6;
         html += '<div style="position:relative;width:'+wrap_size+'px;height:'+wrap_size+'px;">';
-        
-        console.log(result.days);
-        
         result.days.forEach((dayObj) => {
             const wd = dayObj.week_day;
             const x = Math.round( wd * CELL_SIZE );
             const y = Math.round( week * CELL_SIZE );
-            
-            console.log(x);
             const css_str = 'position:absolute;left:' + x + 'px;top:' + y + 'px;'+
             'width:' + CELL_SIZE + 'px;height:' + CELL_SIZE + 'px;'+
             'background:' + dayObj.color + ';' +
@@ -326,24 +291,67 @@
             }
         });
         html += '</div>';
-        
         const el = document.createElement('div');
         el.innerHTML = html;
         el.setAttribute('style', COMMON_WRAP_STYLE);
         return el;
     };
 
-    RCTF.setup_pane = (COLOR) => {
-
-        const el_wrap = document.createElement('div');
+    const setup_pane = ( COLOR = RCTF.COLOR ) => {
+        let el_wrap = document.getElementById('rctf_pane_wrap');
+        if(el_wrap){
+            return el_wrap;
+        }
         
+        console.log('rctf_pane_wrap pane not found. Creating and in injecting it...');
+        
+        el_wrap = document.createElement('div');
+        el_wrap.setAttribute('id', 'rctf_pane_wrap');
         el_wrap.appendChild( get_data1_status_html(COLOR) );
-        
         el_wrap.appendChild( get_color_config_html(COLOR) );
-        
-        el_wrap.appendChild( get_outlook_html( COLOR ) );
-        
+        el_wrap.appendChild( get_outlook_html( COLOR ) );    
         inject_pane('ctf', 'Color Tag Fix ' + RCTF.VERSION, el_wrap);
+        return el_wrap;
+    };
+
+    const update_pane = ( COLOR = RCTF.COLOR, now = new Date() ) => {
+        
+        const el_wrap = setup_pane( COLOR );
+        
+        console.log('','el_wrap',el_wrap,'');
+
+    };
+
+    RCTF.run_color_tag_fix = ( COLOR = RCTF.COLOR, DATE = new Date() ) => {
+
+        if(typeof COLOR === 'object'){
+            const print_index = get_print_index_by_date(COLOR, DATE );
+            COLOR.color = COLOR.data[ print_index ].desc;
+        }
+        if(typeof COLOR === 'string'){
+            COLOR = { color: COLOR, debug: false };
+        }
+        
+        COLOR.back_color = get_html_color();
+        
+        if(COLOR.back_color === COLOR.color){
+            console.log('');
+            console.log('both data1 and CTF color are:' + COLOR.color );
+            console.log('unless you are using a custom config, you may be able to remove this extension now.');
+            console.log('');
+        }
+        
+        if(COLOR.back_color != COLOR.color){
+            console.log('');
+            console.log('data1 backend color is: ' + COLOR.back_color );
+            console.log('CTF color is: ' + COLOR.color );
+            console.log('Please continue using this extension.');
+            console.log('');
+        }
+        
+        apply_to_buttons(COLOR);
+        apply_to_elements(COLOR);
+        update_pane(COLOR, DATE);
     };
 
 })();

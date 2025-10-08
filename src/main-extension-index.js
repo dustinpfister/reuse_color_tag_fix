@@ -96,9 +96,8 @@ get('VERSION')
     .then((result)=>{
         console.log('setup is done');
         console.log(result);
-        
-        RCTF.setup_pane(RCTF.COLOR);
-        
+        //RCTF.setup_pane(RCTF.COLOR);
+        //RCTF.update_pane(RCTF.COLOR, new Date());
     });
 });
 
