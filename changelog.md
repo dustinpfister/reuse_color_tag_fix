@@ -26,16 +26,17 @@
 
 # Pending changes for current Revision
 
+* new system for setting back\_color status that will persist with new configs
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
-* outlook will change
-* outlook in CTF pane will change depending on current mode.
+
 
 # Change Log History
 
 ## R8 - set a local config
 * have a update\_pane method in main-extension-api
 * make RCTF.setup\_pane private and only called in update\_pane if the pane is not there to begin with
+* outlook will change with updates to COLOR object used
 
 ## R7 - CTF pane element
 * VERSION is displayed in popup menu
