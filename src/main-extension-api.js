@@ -100,6 +100,7 @@ const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
     return html
 };
 
+
 const setup_pane = ( COLOR = RCTF.COLOR ) => {
     let el_wrap = document.getElementById('rctf_pane_wrap');
     if(el_wrap){
@@ -113,28 +114,25 @@ const setup_pane = ( COLOR = RCTF.COLOR ) => {
     
     {
         let el = document.createElement('div');
-        el.innerHTML = get_data1_status_html( COLOR );
+        el.id='rctf_info_data1_status';
+        //el.innerHTML = get_data1_status_html( COLOR );
         el.setAttribute('style', COMMON_WRAP_STYLE);
         el_wrap.appendChild( el );
     }
-    
     {
         let el = document.createElement('div');
-        el.innerHTML = get_color_config_html( COLOR );
+        el.id='rctf_info_config';
+        //el.innerHTML = get_color_config_html( COLOR );
         el.setAttribute('style', COMMON_WRAP_STYLE);
         el_wrap.appendChild( el );
     }
-    
     {
         let el = document.createElement('div');
-        el.innerHTML = get_outlook_html( COLOR, new Date(), 100 );
+        el.id='rctf_info_outlook';
+        //el.innerHTML = get_outlook_html( COLOR, new Date(), 100 );
         el.setAttribute('style', COMMON_WRAP_STYLE);
         el_wrap.appendChild( el );
-    }
-    
-    //el_wrap.appendChild( get_data1_status_html(COLOR) );
-    //el_wrap.appendChild( get_color_config_html(COLOR) );
-    //el_wrap.appendChild( get_outlook_html( COLOR ) );    
+    }   
     inject_pane('ctf', 'Color Tag Fix ' + RCTF.VERSION, el_wrap);
     return el_wrap;
 };
@@ -142,6 +140,20 @@ const setup_pane = ( COLOR = RCTF.COLOR ) => {
 const update_pane = ( COLOR = RCTF.COLOR, now = new Date() ) => {
     
     let el_wrap = setup_pane( COLOR );
+    
+    let el = document.getElementById('rctf_info_data1_status');
+    
+    console.log('update for data1 status info:');
+    console.log(COLOR);
+    
+    el.innerHTML = get_data1_status_html( COLOR );
+
+    el = document.getElementById('rctf_info_config');
+    el.innerHTML = get_color_config_html( COLOR );
+
+    el = document.getElementById('rctf_info_outlook');
+    el.innerHTML = get_outlook_html( COLOR, new Date(), 100 );
+
     
     console.log('','el_wrap',el_wrap,'')
 
