@@ -28,7 +28,7 @@
 
 ```
 // the current system
-RCTF.parse_color({
+RCTF.run_color_tag_fix( RCTF.parse_color({
     first_tuesday : new Date(2025, 8, 9),
     first_index : 0,
     ascending: true,
@@ -39,10 +39,10 @@ RCTF.parse_color({
         { i: 3, desc: 'Orange', web: '#ff8800' },
         { i: 4, desc: 'Red',    web: '#ff0000' }
     ]
-})
+}) );
 
 // original 6 color system example
-RCTF.parse_color({
+RCTF.run_color_tag_fix( RCTF.parse_color({
     first_tuesday : new Date(2025, 0, 7),
     first_index : 0,
     ascending: false,
@@ -54,7 +54,7 @@ RCTF.parse_color({
         { i: 4, desc: 'Yellow',   web: '#ffff00' },
         { i: 5, desc: 'Blue',     web: '#0000ff' }
     ]
-})
+}) );
 ```
 
 * can define an array of COLOR objects to use with the extension
