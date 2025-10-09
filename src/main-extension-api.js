@@ -16,7 +16,7 @@ RCTF.VERSION = VERSION;
 
 RCTF.parse_color = ( obj = {} ) => {
     if(obj.constructor.name === 'Array'){
-        return parse_color.array(obj);
+        return parse_color.array( obj );
     }
     return parse_color.object( obj );
 };

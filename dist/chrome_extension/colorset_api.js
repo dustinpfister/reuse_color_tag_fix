@@ -163,16 +163,21 @@
         ],
         color: 'Green'
     };
-    const COLOR_ARRAY_DEFAULT = [ COLOR_DEFAULT ];
+    //const COLOR_ARRAY_DEFAULT = [ COLOR_DEFAULT ];
 
     const parse_color = {};
 
     parse_color.object = ( COLOR ) => {
-        return Object.assign({}, COLOR_DEFAULT, COLOR);
+        const new_color = Object.assign({}, COLOR_DEFAULT, COLOR);
+        new_color.color = new_color.data[ new_color.first_index ].desc;
+        return new_color;
     };
 
-    parse_color.array = ( COLOR_ARRAY ) => {
-        return COLOR_ARRAY_DEFAULT;
+    parse_color.array = ( COLOR_ARRAY=[] ) => {
+        //return COLOR_ARRAY_DEFAULT;
+        return COLOR_ARRAY.map( (COLOR) => {
+            return parse_color.object( COLOR );
+        });
     };
 
     const gen_outlook = (COLOR, year=2025, month=0) => {
@@ -207,7 +212,7 @@
 
     RCTF.parse_color = ( obj = {} ) => {
         if(obj.constructor.name === 'Array'){
-            return parse_color.array(obj);
+            return parse_color.array( obj );
         }
         return parse_color.object( obj );
     };
