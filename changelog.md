@@ -26,37 +26,6 @@
 
 # Pending changes for current Revision
 
-```
-// the current system
-RCTF.run_color_tag_fix( RCTF.parse_color({
-    first_tuesday : new Date(2025, 8, 9),
-    first_index : 0,
-    ascending: true,
-    data : [  
-        { i: 0, desc: 'Green',  web: '#00ff00' },
-        { i: 1, desc: 'Blue',   web: '#0000ff' },
-        { i: 2, desc: 'Yellow', web: '#ffff00' },
-        { i: 3, desc: 'Orange', web: '#ff8800' },
-        { i: 4, desc: 'Red',    web: '#ff0000' }
-    ]
-}) );
-
-// original 6 color system example
-RCTF.run_color_tag_fix( RCTF.parse_color({
-    first_tuesday : new Date(2025, 0, 7),
-    first_index : 0,
-    ascending: false,
-    data : [
-        { i: 0, desc: 'Lavender', web: '#ff00aa' },
-        { i: 1, desc: 'Green',    web: '#00ff00' },
-        { i: 2, desc: 'Red',      web: '#ff0000' },
-        { i: 3, desc: 'Orange',   web: '#ff8800' },
-        { i: 4, desc: 'Yellow',   web: '#ffff00' },
-        { i: 5, desc: 'Blue',     web: '#0000ff' }
-    ]
-}) );
-```
-
 * can define an array of COLOR objects to use with the extension
 * see if color fix extension can be used to inject favicon at any data1 address if not there
 * outlook will change

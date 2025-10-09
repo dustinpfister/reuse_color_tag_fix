@@ -47,10 +47,11 @@ const get_data1_status_html = (COLOR={}) => {
     if(COLOR.back_color === COLOR.color){
         html += '<p style=\"color:green;border:1px solid green;padding:10px;background:#ffffff;\">The CTF color does Match up with data1. Unless you are experimenting with a custom configuration, this is a good sign that there has been a patch to the data1 back end code. As such you can remove the CTF extension if this is in fact the case.</p>';
     }
-    const el = document.createElement('div');
-    el.innerHTML = html;
-    el.setAttribute('style', COMMON_WRAP_STYLE);
-    return el;
+    //const el = document.createElement('div');
+    //el.innerHTML = html;
+    //el.setAttribute('style', COMMON_WRAP_STYLE);
+    //return el;
+    return html;
 };
 
 const get_color_config_html = ( COLOR={} ) => {
@@ -73,11 +74,7 @@ const get_color_config_html = ( COLOR={} ) => {
         i += 1;
     }
     html += '</table>';
-    
-    const el = document.createElement('div');
-    el.innerHTML = html;
-    el.setAttribute('style', COMMON_WRAP_STYLE);
-    return el;
+    return html;
 };
 
 const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
@@ -100,10 +97,7 @@ const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
         }
     });
     html += '</div>';
-    const el = document.createElement('div');
-    el.innerHTML = html;
-    el.setAttribute('style', COMMON_WRAP_STYLE);
-    return el;
+    return html
 };
 
 const setup_pane = ( COLOR = RCTF.COLOR ) => {
@@ -116,16 +110,38 @@ const setup_pane = ( COLOR = RCTF.COLOR ) => {
     
     el_wrap = document.createElement('div');
     el_wrap.setAttribute('id', 'rctf_pane_wrap');
-    el_wrap.appendChild( get_data1_status_html(COLOR) );
-    el_wrap.appendChild( get_color_config_html(COLOR) );
-    el_wrap.appendChild( get_outlook_html( COLOR ) );    
+    
+    {
+        let el = document.createElement('div');
+        el.innerHTML = get_data1_status_html( COLOR );
+        el.setAttribute('style', COMMON_WRAP_STYLE);
+        el_wrap.appendChild( el );
+    }
+    
+    {
+        let el = document.createElement('div');
+        el.innerHTML = get_color_config_html( COLOR );
+        el.setAttribute('style', COMMON_WRAP_STYLE);
+        el_wrap.appendChild( el );
+    }
+    
+    {
+        let el = document.createElement('div');
+        el.innerHTML = get_outlook_html( COLOR, new Date(), 100 );
+        el.setAttribute('style', COMMON_WRAP_STYLE);
+        el_wrap.appendChild( el );
+    }
+    
+    //el_wrap.appendChild( get_data1_status_html(COLOR) );
+    //el_wrap.appendChild( get_color_config_html(COLOR) );
+    //el_wrap.appendChild( get_outlook_html( COLOR ) );    
     inject_pane('ctf', 'Color Tag Fix ' + RCTF.VERSION, el_wrap);
     return el_wrap;
 };
 
 const update_pane = ( COLOR = RCTF.COLOR, now = new Date() ) => {
     
-    const el_wrap = setup_pane( COLOR );
+    let el_wrap = setup_pane( COLOR );
     
     console.log('','el_wrap',el_wrap,'')
 
@@ -162,3 +178,37 @@ RCTF.run_color_tag_fix = ( COLOR = RCTF.COLOR, DATE = new Date() ) => {
     apply_to_elements(COLOR);
     update_pane(COLOR, DATE);
 };
+
+RCTF.run_5 = ( DATE = new Date() ) => {
+    RCTF.run_color_tag_fix( RCTF.parse_color({
+        first_tuesday : new Date(2025, 8, 9),
+        first_index : 0,
+        ascending: true,
+        data : [  
+            { i: 0, desc: 'Green',  web: '#00ff00' },
+            { i: 1, desc: 'Blue',   web: '#0000ff' },
+            { i: 2, desc: 'Yellow', web: '#ffff00' },
+            { i: 3, desc: 'Orange', web: '#ff8800' },
+            { i: 4, desc: 'Red',    web: '#ff0000' }
+        ]
+    }), DATE);
+};
+
+RCTF.run_6 = ( DATE = new Date() ) => {
+    RCTF.run_color_tag_fix( RCTF.parse_color({
+        first_tuesday : new Date(2025, 0, 7),
+        first_index : 0,
+        ascending: false,
+        data : [
+            { i: 0, desc: 'Lavender', web: '#ff00aa' },
+            { i: 1, desc: 'Green',    web: '#00ff00' },
+            { i: 2, desc: 'Red',      web: '#ff0000' },
+            { i: 3, desc: 'Orange',   web: '#ff8800' },
+            { i: 4, desc: 'Yellow',   web: '#ffff00' },
+            { i: 5, desc: 'Blue',     web: '#0000ff' }
+        ]
+    }), DATE);
+};
+
+
+

@@ -38,6 +38,39 @@ The 'chrome\_extension' folder would be the best way to go about fixing the prob
 
 In this section I will write a thing or two about each revision of the color tag fix patch as they come out.
 
+### R8 -
+
+```js
+// the current system
+RCTF.run_color_tag_fix( RCTF.parse_color({
+    first_tuesday : new Date(2025, 8, 9),
+    first_index : 0,
+    ascending: true,
+    data : [  
+        { i: 0, desc: 'Green',  web: '#00ff00' },
+        { i: 1, desc: 'Blue',   web: '#0000ff' },
+        { i: 2, desc: 'Yellow', web: '#ffff00' },
+        { i: 3, desc: 'Orange', web: '#ff8800' },
+        { i: 4, desc: 'Red',    web: '#ff0000' }
+    ]
+}) );
+
+// original 6 color system example
+RCTF.run_color_tag_fix( RCTF.parse_color({
+    first_tuesday : new Date(2025, 0, 7),
+    first_index : 0,
+    ascending: false,
+    data : [
+        { i: 0, desc: 'Lavender', web: '#ff00aa' },
+        { i: 1, desc: 'Green',    web: '#00ff00' },
+        { i: 2, desc: 'Red',      web: '#ff0000' },
+        { i: 3, desc: 'Orange',   web: '#ff8800' },
+        { i: 4, desc: 'Yellow',   web: '#ffff00' },
+        { i: 5, desc: 'Blue',     web: '#0000ff' }
+    ]
+}) );
+```
+
 ### R7 - RCTF info pane
 
 When using the chrome extension an info pane will show up with the other panes such as the current color tag, white tags, ect. This info pane will display info that has to do with the status of the elements that are sent out by the data1 backend, the state of the config that is used, and an outlook for the current month when it comes to up coming color tag chages.
