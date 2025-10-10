@@ -6,8 +6,6 @@ const el_reset = document.querySelector('#button_reset');
 const el_reload = document.querySelector('#button_reload');
 const el_version = document.querySelector('#version');
 
-
-
 chrome.storage.local.get('VERSION')
 .then((result) => {
     el_version.innerText = result.VERSION || '?';;

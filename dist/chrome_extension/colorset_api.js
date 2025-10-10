@@ -61,16 +61,58 @@
     const get_html_color = function(){
         const buttons = document.getElementsByTagName('button');
         let i = 0, len = buttons.length;
+        let back_color = '';
         while(i < len){
             const el = buttons[i];
             const arr_id = el.id.split('');
             if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
-                 return validate_color_key( el.id[0]  );
+                back_color = el.dataset.back_color;
+                if(!back_color){
+                    back_color = el.dataset.back_color = validate_color_key(arr_id[0]);
+                }
+            }
+            i += 1;
+        }
+        return back_color;
+    };
+
+    /*
+    const get_html_color = function(){
+        const buttons = document.getElementsByTagName('button');
+        let i = 0, len = buttons.length;
+        let back_color = '';
+        while(i < len){
+            const el = buttons[i];
+            const arr_id = el.id.split('');
+            back_color = el.dataset.back_color;
+            if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
+                if(back_color){
+                    break;
+                }
+                if(!back_color){
+                    back_color = el.dataset.back_color = arr_id[0];
+                }
+            }
+            i += 1;
+        }
+        return back_color;
+    };
+
+
+    const get_html_color = function(){
+        const buttons = document.getElementsByTagName('button');
+        let i = 0, len = buttons.length;
+        while(i < len){
+            const el = buttons[i];
+            const arr_id = el.id.split('');
+            if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
+                 return el.id[0];
             }
             i += 1;
         }
         return '';
     };
+    */
 
     const inject_pane = ( id_prefix='ctf', label='Color Tag Fix', content='' ) => {
         const el_li = document.createElement('li');
