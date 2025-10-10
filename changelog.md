@@ -26,9 +26,8 @@
 
 # Pending changes for current Revision
 
-
-
-
+* can define a local config that can be used over the hard coded config in the config info pane
+* have a reset to hard coded button in the config div of the info pane
 ```
 ```
 
