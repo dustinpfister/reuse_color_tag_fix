@@ -76,44 +76,6 @@
         return back_color;
     };
 
-    /*
-    const get_html_color = function(){
-        const buttons = document.getElementsByTagName('button');
-        let i = 0, len = buttons.length;
-        let back_color = '';
-        while(i < len){
-            const el = buttons[i];
-            const arr_id = el.id.split('');
-            back_color = el.dataset.back_color;
-            if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
-                if(back_color){
-                    break;
-                }
-                if(!back_color){
-                    back_color = el.dataset.back_color = arr_id[0];
-                }
-            }
-            i += 1;
-        }
-        return back_color;
-    };
-
-
-    const get_html_color = function(){
-        const buttons = document.getElementsByTagName('button');
-        let i = 0, len = buttons.length;
-        while(i < len){
-            const el = buttons[i];
-            const arr_id = el.id.split('');
-            if(arr_id[0] != 'W' && arr_id[0] != 'U' && arr_id.length === 5){
-                 return el.id[0];
-            }
-            i += 1;
-        }
-        return '';
-    };
-    */
-
     const inject_pane = ( id_prefix='ctf', label='Color Tag Fix', content='' ) => {
         const el_li = document.createElement('li');
         const id_pane = id_prefix + '-pane';
@@ -253,12 +215,56 @@
         return result;
     };
 
+    const Color_Array = {};
+
+    Color_Array.sort_by_date = ( color_arr=[] ) => {
+        return color_arr.sort( (a, b) => {
+            if( a.first_tuesday.getTime() > b.first_tuesday.getTime()  ){
+                return 1;
+            }
+            if( a.first_tuesday.getTime() < b.first_tuesday.getTime()  ){
+                return -1;
+            }
+            return 0;
+        });
+    };
+
+    Color_Array.get_times = ( color_arr= [], now = new Date() ) => {
+        color_arr = Color_Array.sort_by_date( color_arr );
+        return color_arr.map( (color, i) => {
+            return {
+                ms: color.first_tuesday.getTime() - now.getTime(),
+                i : i,
+                color: color
+            }
+        });
+    };
+
+    Color_Array.get_obj = ( color_arr=[], now = new Date() ) => {
+       color_arr = Color_Array.sort_by_date( color_arr );
+       return ColorArr.get_times(color_arr, now)
+       .filter((time_result)=>{
+           return time_result.ms < 0;
+       })
+       .sort((a, b)=>{
+          if(a.ms > b.ms){
+              return -1;
+          }
+          if(b.ms < a.ms){
+              return 1;
+          }
+          return 0;
+       })[0].color;
+    };
+
     // the inject_version plugin will inject the version number here:
     const VERSION = "R8";
 
     const RCTF = window.RCTF = {};
 
     RCTF.VERSION = VERSION;
+
+    RCTF.Color_Array = Color_Array;
 
     RCTF.parse_color = ( obj = {} ) => {
         if(obj.constructor.name === 'Array'){
@@ -269,7 +275,9 @@
 
     RCTF.COLOR = RCTF.parse_color( );
 
-
+    RCTF.get = ( COLOR={} ) => {
+        return Color_Array();
+    };
 
     RCTF.gen_outlook = ( COLOR = RCTF.COLOR, year='2025', month=0) => {
         return gen_outlook(COLOR, year, month);

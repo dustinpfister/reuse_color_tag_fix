@@ -27,8 +27,11 @@
 # Pending changes for current Revision
 
 
-* can define an array of COLOR objects to use with the extension
-* see if color fix extension can be used to inject favicon at any data1 address if not there
+
+
+```
+```
+
 
 
 # Change Log History
@@ -38,6 +41,9 @@
 * make RCTF.setup\_pane private and only called in update\_pane if the pane is not there to begin with
 * outlook will change with updates to COLOR object used
 * get\_html\_color will now set back\_color data attributes as a way to save the color deployed by data1
+* can now define an array of COLOR objects to use with the extension with new Color\_Array methods
+* Arrays of COLOR objects are sorted by first\_tuesday date
+
 
 ## R7 - CTF pane element
 * VERSION is displayed in popup menu

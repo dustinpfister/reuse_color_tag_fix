@@ -6,6 +6,7 @@ import { apply_to_buttons } from './apply_to_buttons.js';
 import { apply_to_elements } from './apply_to_elements.js';
 import { parse_color } from './parse_color.js';
 import { gen_outlook } from './gen_outlook.js';
+import { Color_Array } from './color_array.js';
 
 // the inject_version plugin will inject the version number here:
 //[INJECT_VERSION]
@@ -13,6 +14,8 @@ import { gen_outlook } from './gen_outlook.js';
 const RCTF = window.RCTF = {};
 
 RCTF.VERSION = VERSION;
+
+RCTF.Color_Array = Color_Array;
 
 RCTF.parse_color = ( obj = {} ) => {
     if(obj.constructor.name === 'Array'){
@@ -23,7 +26,9 @@ RCTF.parse_color = ( obj = {} ) => {
 
 RCTF.COLOR = RCTF.parse_color( );
 
-
+RCTF.get = ( COLOR={} ) => {
+    return Color_Array();
+};
 
 RCTF.gen_outlook = ( COLOR = RCTF.COLOR, year='2025', month=0) => {
     return gen_outlook(COLOR, year, month);
