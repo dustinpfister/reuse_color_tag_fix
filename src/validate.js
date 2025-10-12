@@ -31,4 +31,4 @@ const validate_color_key = ( color_key='') => {
     return false;
 };
 
-export { validate_color_key };
+export { validate_color_key, get_color_keys };

@@ -307,8 +307,8 @@
         //return el;
         return html;
     };
-
-    const get_color_config_html = ( COLOR={} ) => {
+    /*
+    const get_config_html = ( COLOR={} ) => {
         let html = '<h3>CTF config </h3>';
         
         let i = 0;
@@ -330,6 +330,8 @@
         html += '</table>';
         return html;
     };
+
+    */
 
     const get_outlook_html = ( COLOR={}, date=new Date(), CELL_SIZE=100 ) => {
         let html = '<h3> Outlook </h3>';
@@ -354,6 +356,18 @@
         return html
     };
 
+    const create_config_pannel = (  ) => {
+        const el_wrap = document.createElement('div'); 
+        const el_color_list = document.create_element('li');
+        el_wrap.appendChild(el_color_list);
+        
+        
+        
+        //el_color_list.appendChild(el_li);
+        
+        
+        return el_wrap;
+    };
 
     const setup_pane = ( COLOR = RCTF.COLOR ) => {
         let el_wrap = document.getElementById('rctf_pane_wrap');
@@ -369,24 +383,29 @@
         {
             let el = document.createElement('div');
             el.id='rctf_info_data1_status';
-            //el.innerHTML = get_data1_status_html( COLOR );
             el.setAttribute('style', COMMON_WRAP_STYLE);
             el_wrap.appendChild( el );
         }
+        
         {
-            let el = document.createElement('div');
-            el.id='rctf_info_config';
-            //el.innerHTML = get_color_config_html( COLOR );
-            el.setAttribute('style', COMMON_WRAP_STYLE);
-            el_wrap.appendChild( el );
+            //let el = document.createElement('div');
+            //el.id='rctf_info_config';
+            //el.setAttribute('style', COMMON_WRAP_STYLE);
+            //el_wrap.appendChild( el );
         }
+
         {
             let el = document.createElement('div');
             el.id='rctf_info_outlook';
-            //el.innerHTML = get_outlook_html( COLOR, new Date(), 100 );
             el.setAttribute('style', COMMON_WRAP_STYLE);
             el_wrap.appendChild( el );
-        }   
+        }
+        
+        const colors = get_color_keys();
+        
+        console.log(colors);
+        
+        
         inject_pane('ctf', 'Color Tag Fix ' + RCTF.VERSION, el_wrap);
         return el_wrap;
     };
@@ -402,8 +421,8 @@
         
         el.innerHTML = get_data1_status_html( COLOR );
 
-        el = document.getElementById('rctf_info_config');
-        el.innerHTML = get_color_config_html( COLOR );
+        //el = document.getElementById('rctf_info_config');
+        //el.innerHTML = get_config_html( COLOR );
 
         el = document.getElementById('rctf_info_outlook');
         el.innerHTML = get_outlook_html( COLOR, new Date(), 100 );

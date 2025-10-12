@@ -19,8 +19,6 @@
 * a main update app loop that will update the color based on the current date as the date changes
 * main update loop will not be active if in 'auto\_by\_fixed' or 'manual' mode
 * The CTF pane displays info about when the next color update will happen
-* The current day is highlighted in the Outlook CTF pane section
-* CTF pane gives an outlook for the next month
 * The CTF pane informs what color is currently 25% off, 50% off, and the cull color
 
 
@@ -28,10 +26,9 @@
 
 * can define a local config that can be used over the hard coded config in the config info pane
 * have a reset to hard coded button in the config div of the info pane
-```
-```
-
-
+* show smaller last month, and next month graphics in outlook pane
+* display month and year of months in outlook pane
+* The current day is highlighted in the Outlook CTF pane section
 
 # Change Log History
 
